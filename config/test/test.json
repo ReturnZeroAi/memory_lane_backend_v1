@@ -1,0 +1,16 @@
+{
+  "server": { "port": 3100 },
+  "security": {
+    "jwtAccessSecret": "test_access_secret_change_me",
+    "jwtRefreshSecret": "test_refresh_secret_change_me",
+    "accessTokenTtlSec": 900,
+    "refreshTokenTtlSec": 1209600,
+    "bcryptSaltRounds": 4,
+    "rateLimitWindowMs": 60000,
+    "rateLimitMax": 50
+  },
+  "database": {
+    "url": "postgresql://postgres:postgres@localhost:5432/memory_lane_test?schema=public"
+  },
+  "cors": { "origin": ["http://localhost:3000"], "credentials": true }
+}
