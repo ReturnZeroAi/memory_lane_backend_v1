@@ -7,7 +7,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development ts-node-dev --respawn --transpile-only -r tsconfig-paths/register apps/api/src/index.ts",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "NODE_ENV=production node apps/api/dist/index.js",
+    "prisma:generate": "bash apps/api/scripts/db-url.sh ${NODE_ENV:-development} && prisma generate --schema apps/api/prisma/schema.prisma",
+    "prisma:migrate:dev": "bash apps/api/scripts/db-url.sh development && prisma migrate dev --schema apps/api/prisma/schema.prisma",
+    "prisma:migrate:deploy": "bash apps/api/scripts/db-url.sh production && prisma migrate deploy --schema apps/api/prisma/schema.prisma",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -41,6 +47,8 @@
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.4",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.2"
   }
 }
