@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@common/*": ["libs/common/src/*"],
+      "@shared/*": ["libs/shared/*"],
       "@auth/*": ["apps/api/src/auth/*"],
       "@users/*": ["libs/users/*"],
       "@lanes/*": ["libs/lanes/*"],
@@ -20,6 +20,6 @@
       "@notes/*": ["libs/notes/*"]
     }
   },
-  "include": ["apps/api/src", "apps/api/prisma", "libs/common/src", "libs/users", "libs/lanes", "libs/calendar", "libs/notes"],
+  "include": ["apps/api/src", "apps/api/prisma", "libs/shared", "libs/users", "libs/lanes", "libs/calendar", "libs/notes"],
   "exclude": ["tests", "**/*.test.ts", "**/*.spec.ts"]
 }
