@@ -1,0 +1,75 @@
+generator client {
+  provider   = "prisma-client-js"
+  output     = "../generated/prisma"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  lanes     Lane[]
+  calendars Calendar[]
+  notes     Note[]
+
+  @@map("users")
+}
+
+model Lane {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  color       String?
+  userId      String   @map("user_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notes Note[]
+
+  @@index([userId])
+  @@map("lanes")
+}
+
+model Calendar {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime
+  endDate     DateTime? @map("end_date")
+  isAllDay    Boolean  @default(false) @map("is_all_day")
+  userId      String   @map("user_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([date])
+  @@map("calendars")
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  laneId    String?  @map("lane_id")
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lane Lane? @relation(fields: [laneId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([laneId])
+  @@map("notes")
+}
