@@ -1,6 +1,0 @@
-node_modules
-apps/api/dist
-coverage
-*.log
-.DS_Store
-.prisma
