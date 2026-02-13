@@ -4,7 +4,7 @@ import { ApiResponse } from '@libs/shared/response/index.js';
 import { config } from '@libs/shared/config/index.js';
 import { UnauthorizedError } from '@libs/shared/errors/index.js';
 import type { RegisterDto, LoginDto } from './dto.js';
-import { getGoogleAuthURL } from './google.js';
+import { getGoogleAuthURL } from '../../libs/shared/middleware/google.js';
 
 const REFRESH_COOKIE_NAME = 'refreshToken';
 const REFRESH_COOKIE_MAX_AGE = 365 * 24 * 60 * 60 * 1000; // 365 days in ms

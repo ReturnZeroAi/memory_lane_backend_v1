@@ -6,7 +6,7 @@ import { ConflictError, UnauthorizedError } from '@libs/shared/errors/index.js';
 import { logger } from '@libs/shared/logger/index.js';
 import type { JwtPayload } from '@libs/shared/middleware/index.js';
 import type { RegisterDto, LoginDto, AuthResponseDto } from './dto.js';
-import { getGoogleUser } from './google.js';
+import { getGoogleUser } from '@libs/shared/middleware/google.js';
 
 const SALT_ROUNDS = 12;
 const REFRESH_TOKEN_EXPIRES_IN: SignOptions['expiresIn'] = '365d';
