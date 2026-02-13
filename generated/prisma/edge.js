@@ -92,45 +92,33 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.LanesScalarFieldEnum = {
   id: 'id',
+  name: 'name',
+  description: 'description',
+  created_at: 'created_at'
+};
+
+exports.Prisma.SessionsScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  refresh_token: 'refresh_token',
+  user_agent: 'user_agent',
+  ip_address: 'ip_address',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
   email: 'email',
   password: 'password',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.LaneScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  color: 'color',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.CalendarScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  date: 'date',
-  endDate: 'endDate',
-  isAllDay: 'isAllDay',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.NoteScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  content: 'content',
-  laneId: 'laneId',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  phone: 'phone',
+  lane_id: 'lane_id',
+  created_at: 'created_at',
+  provider: 'provider',
+  provider_id: 'provider_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -150,10 +138,9 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Lane: 'Lane',
-  Calendar: 'Calendar',
-  Note: 'Note'
+  lanes: 'lanes',
+  sessions: 'sessions',
+  users: 'users'
 };
 /**
  * Create the Client
@@ -163,10 +150,10 @@ const config = {
   "clientVersion": "7.4.0-dev.19",
   "engineVersion": "d0314091cdd30494eefc61d346f8c09aca20dfca",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider   = \"prisma-client-js\"\n  output     = \"../generated/prisma\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  password  String\n  name      String\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  lanes     Lane[]\n  calendars Calendar[]\n  notes     Note[]\n\n  @@map(\"users\")\n}\n\nmodel Lane {\n  id          String   @id @default(uuid())\n  title       String\n  description String?\n  color       String?\n  userId      String   @map(\"user_id\")\n  createdAt   DateTime @default(now()) @map(\"created_at\")\n  updatedAt   DateTime @updatedAt @map(\"updated_at\")\n\n  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  notes Note[]\n\n  @@index([userId])\n  @@map(\"lanes\")\n}\n\nmodel Calendar {\n  id          String    @id @default(uuid())\n  title       String\n  description String?\n  date        DateTime\n  endDate     DateTime? @map(\"end_date\")\n  isAllDay    Boolean   @default(false) @map(\"is_all_day\")\n  userId      String    @map(\"user_id\")\n  createdAt   DateTime  @default(now()) @map(\"created_at\")\n  updatedAt   DateTime  @updatedAt @map(\"updated_at\")\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@index([userId])\n  @@index([date])\n  @@map(\"calendars\")\n}\n\nmodel Note {\n  id        String   @id @default(uuid())\n  title     String\n  content   String\n  laneId    String?  @map(\"lane_id\")\n  userId    String   @map(\"user_id\")\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)\n  lane Lane? @relation(fields: [laneId], references: [id], onDelete: SetNull)\n\n  @@index([userId])\n  @@index([laneId])\n  @@map(\"notes\")\n}\n"
+  "inlineSchema": "generator client {\n  provider   = \"prisma-client-js\"\n  output     = \"../generated/prisma\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel lanes {\n  id          String    @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name        String    @db.VarChar(100)\n  description String?\n  created_at  DateTime? @default(now()) @db.Timestamp(6)\n  users       users[]\n}\n\nmodel sessions {\n  id            String   @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  user_id       String   @db.Uuid\n  refresh_token String\n  user_agent    String?  @db.VarChar(512)\n  ip_address    String?  @db.VarChar(45)\n  created_at    DateTime @default(now()) @db.Timestamp(6)\n  updated_at    DateTime @db.Timestamp(6)\n  users         users    @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel users {\n  id          String     @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name        String     @db.VarChar(150)\n  email       String     @unique @db.VarChar(255)\n  password    String?\n  phone       String     @db.VarChar(20)\n  lane_id     String?    @db.Uuid\n  created_at  DateTime?  @default(now()) @db.Timestamp(6)\n  provider    String?    @db.VarChar(50)\n  provider_id String?    @db.VarChar(255)\n  sessions    sessions[]\n  lanes       lanes?     @relation(fields: [lane_id], references: [id], onUpdate: NoAction, map: \"fk_lane\")\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"lanes\",\"kind\":\"object\",\"type\":\"Lane\",\"relationName\":\"LaneToUser\"},{\"name\":\"calendars\",\"kind\":\"object\",\"type\":\"Calendar\",\"relationName\":\"CalendarToUser\"},{\"name\":\"notes\",\"kind\":\"object\",\"type\":\"Note\",\"relationName\":\"NoteToUser\"}],\"dbName\":\"users\"},\"Lane\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"color\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"LaneToUser\"},{\"name\":\"notes\",\"kind\":\"object\",\"type\":\"Note\",\"relationName\":\"LaneToNote\"}],\"dbName\":\"lanes\"},\"Calendar\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"end_date\"},{\"name\":\"isAllDay\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"is_all_day\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CalendarToUser\"}],\"dbName\":\"calendars\"},\"Note\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"laneId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"lane_id\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NoteToUser\"},{\"name\":\"lane\",\"kind\":\"object\",\"type\":\"Lane\",\"relationName\":\"LaneToNote\"}],\"dbName\":\"notes\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"lanes\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"lanesTousers\"}],\"dbName\":null},\"sessions\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refresh_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user_agent\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ip_address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"sessionsTousers\"}],\"dbName\":null},\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lane_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"sessions\",\"relationName\":\"sessionsTousers\"},{\"name\":\"lanes\",\"kind\":\"object\",\"type\":\"lanes\",\"relationName\":\"lanesTousers\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
   getRuntime: async () => require('./query_compiler_fast_bg.js'),

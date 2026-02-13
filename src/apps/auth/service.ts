@@ -6,9 +6,10 @@ import { ConflictError, UnauthorizedError } from '@libs/shared/errors/index.js';
 import { logger } from '@libs/shared/logger/index.js';
 import type { JwtPayload } from '@libs/shared/middleware/index.js';
 import type { RegisterDto, LoginDto, AuthResponseDto } from './dto.js';
+import { getGoogleUser } from './google.js';
 
 const SALT_ROUNDS = 12;
-const REFRESH_TOKEN_EXPIRES_IN: SignOptions['expiresIn'] = '30d';
+const REFRESH_TOKEN_EXPIRES_IN: SignOptions['expiresIn'] = '365d';
 
 interface RefreshTokenPayload extends JwtPayload {
   sessionId: string;
@@ -70,6 +71,10 @@ export class AuthService {
       throw new UnauthorizedError('Invalid email or password');
     }
 
+    if (!user.password) {
+      throw new UnauthorizedError('Invalid email or password');
+    }
+
     const isPasswordValid = await bcrypt.compare(data.password, user.password);
 
     if (!isPasswordValid) {
@@ -85,6 +90,8 @@ export class AuthService {
         id: user.id,
         email: user.email,
         name: user.name,
+        provider: user.provider,
+        provider_id: user.provider_id,
       },
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
@@ -96,7 +103,7 @@ export class AuthService {
 
     const session = await prisma.sessions.findUnique({
       where: { id: decoded.sessionId },
-      include: { users: { select: { id: true, email: true, name: true } } },
+      include: { users: { select: { id: true, email: true, name: true, provider: true, provider_id: true } } },
     });
 
     if (!session) {
@@ -127,6 +134,8 @@ export class AuthService {
         id: session.users.id,
         email: session.users.email,
         name: session.users.name,
+        provider: session.users.provider,
+        provider_id: session.users.provider_id,
       },
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
@@ -175,6 +184,7 @@ export class AuthService {
         refresh_token: '', // will be updated immediately
         user_agent: meta.userAgent ?? null,
         ip_address: meta.ipAddress ?? null,
+        updated_at: new Date(),
       },
     });
 
@@ -217,6 +227,55 @@ export class AuthService {
     } catch {
       throw new UnauthorizedError('Invalid or expired refresh token');
     }
+  }
+  async googleLogin(code: string, meta: SessionMeta): Promise<AuthResponseDto & { refreshToken: string }> {
+    const googleUser = await getGoogleUser({ code });
+
+    let user = await prisma.users.findUnique({
+      where: { email: googleUser.email },
+    });
+
+    if (!user) {
+      // Create new user
+      user = await prisma.users.create({
+        data: {
+          email: googleUser.email,
+          name: googleUser.name,
+          provider: 'google',
+          provider_id: googleUser.sub,
+          password: null,
+          phone: '', // Phone is required by schema, using empty string for OAuth users
+        },
+      });
+    } else {
+      // User exists
+      if (!user.provider) {
+        // Link account? For now, just login.
+        // potentially update provider info if we want to enforce linking
+      }
+    }
+
+    // I need to be careful about the types. 
+    // If I ran `prisma db pull`, the client types might not be updated until I run `prisma generate`.
+    // The user manually updated DB. I ran `prisma db pull`. 
+    // I need to run `prisma generate` to update the client types.
+
+    // Proceed with session creation
+    const tokens = await this.createSession(user.id, user.email, meta);
+
+    logger.info({ userId: user.id }, 'User logged in via Google');
+
+    return {
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        provider: user.provider,
+        provider_id: user.provider_id,
+      },
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+    };
   }
 }
 

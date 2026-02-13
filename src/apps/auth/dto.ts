@@ -14,7 +14,9 @@ export interface AuthResponseDto {
   user: {
     id: string;
     email: string;
-    name: string;
+    name: string | null; // Allow name to be null as per Prisma schema
+    provider?: string | null;
+    provider_id?: string | null;
   };
   accessToken: string;
 }

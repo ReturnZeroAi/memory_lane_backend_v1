@@ -14,25 +14,20 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model User
+ * Model lanes
  * 
  */
-export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+export type lanes = $Result.DefaultSelection<Prisma.$lanesPayload>
 /**
- * Model Lane
+ * Model sessions
  * 
  */
-export type Lane = $Result.DefaultSelection<Prisma.$LanePayload>
+export type sessions = $Result.DefaultSelection<Prisma.$sessionsPayload>
 /**
- * Model Calendar
+ * Model users
  * 
  */
-export type Calendar = $Result.DefaultSelection<Prisma.$CalendarPayload>
-/**
- * Model Note
- * 
- */
-export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
+export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -41,8 +36,8 @@ export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Lanes
+ * const lanes = await prisma.lanes.findMany()
  * ```
  *
  *
@@ -62,8 +57,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Lanes
+   * const lanes = await prisma.lanes.findMany()
    * ```
    *
    *
@@ -152,44 +147,34 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
-    * ```
-    */
-  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.lane`: Exposes CRUD operations for the **Lane** model.
+   * `prisma.lanes`: Exposes CRUD operations for the **lanes** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Lanes
-    * const lanes = await prisma.lane.findMany()
+    * const lanes = await prisma.lanes.findMany()
     * ```
     */
-  get lane(): Prisma.LaneDelegate<ExtArgs, ClientOptions>;
+  get lanes(): Prisma.lanesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.calendar`: Exposes CRUD operations for the **Calendar** model.
+   * `prisma.sessions`: Exposes CRUD operations for the **sessions** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Calendars
-    * const calendars = await prisma.calendar.findMany()
+    * // Fetch zero or more Sessions
+    * const sessions = await prisma.sessions.findMany()
     * ```
     */
-  get calendar(): Prisma.CalendarDelegate<ExtArgs, ClientOptions>;
+  get sessions(): Prisma.sessionsDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.note`: Exposes CRUD operations for the **Note** model.
+   * `prisma.users`: Exposes CRUD operations for the **users** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Notes
-    * const notes = await prisma.note.findMany()
+    * // Fetch zero or more Users
+    * const users = await prisma.users.findMany()
     * ```
     */
-  get note(): Prisma.NoteDelegate<ExtArgs, ClientOptions>;
+  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -624,10 +609,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User',
-    Lane: 'Lane',
-    Calendar: 'Calendar',
-    Note: 'Note'
+    lanes: 'lanes',
+    sessions: 'sessions',
+    users: 'users'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -643,303 +627,229 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "lane" | "calendar" | "note"
+      modelProps: "lanes" | "sessions" | "users"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      User: {
-        payload: Prisma.$UserPayload<ExtArgs>
-        fields: Prisma.UserFieldRefs
+      lanes: {
+        payload: Prisma.$lanesPayload<ExtArgs>
+        fields: Prisma.lanesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.lanesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           findFirst: {
-            args: Prisma.UserFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.lanesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           findMany: {
-            args: Prisma.UserFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.lanesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>[]
           }
           create: {
-            args: Prisma.UserCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           createMany: {
-            args: Prisma.UserCreateManyArgs<ExtArgs>
+            args: Prisma.lanesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.lanesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>[]
           }
           delete: {
-            args: Prisma.UserDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           update: {
-            args: Prisma.UserUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           deleteMany: {
-            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            args: Prisma.lanesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            args: Prisma.lanesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.lanesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>[]
           }
           upsert: {
-            args: Prisma.UserUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.lanesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$lanesPayload>
           }
           aggregate: {
-            args: Prisma.UserAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUser>
+            args: Prisma.LanesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLanes>
           }
           groupBy: {
-            args: Prisma.UserGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserGroupByOutputType>[]
+            args: Prisma.lanesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LanesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserCountArgs<ExtArgs>
-            result: $Utils.Optional<UserCountAggregateOutputType> | number
+            args: Prisma.lanesCountArgs<ExtArgs>
+            result: $Utils.Optional<LanesCountAggregateOutputType> | number
           }
         }
       }
-      Lane: {
-        payload: Prisma.$LanePayload<ExtArgs>
-        fields: Prisma.LaneFieldRefs
+      sessions: {
+        payload: Prisma.$sessionsPayload<ExtArgs>
+        fields: Prisma.sessionsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.LaneFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload> | null
+            args: Prisma.sessionsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.LaneFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           findFirst: {
-            args: Prisma.LaneFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload> | null
+            args: Prisma.sessionsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.LaneFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           findMany: {
-            args: Prisma.LaneFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>[]
+            args: Prisma.sessionsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>[]
           }
           create: {
-            args: Prisma.LaneCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           createMany: {
-            args: Prisma.LaneCreateManyArgs<ExtArgs>
+            args: Prisma.sessionsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.LaneCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>[]
+            args: Prisma.sessionsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>[]
           }
           delete: {
-            args: Prisma.LaneDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           update: {
-            args: Prisma.LaneUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           deleteMany: {
-            args: Prisma.LaneDeleteManyArgs<ExtArgs>
+            args: Prisma.sessionsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.LaneUpdateManyArgs<ExtArgs>
+            args: Prisma.sessionsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.LaneUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>[]
+            args: Prisma.sessionsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>[]
           }
           upsert: {
-            args: Prisma.LaneUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LanePayload>
+            args: Prisma.sessionsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$sessionsPayload>
           }
           aggregate: {
-            args: Prisma.LaneAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateLane>
+            args: Prisma.SessionsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSessions>
           }
           groupBy: {
-            args: Prisma.LaneGroupByArgs<ExtArgs>
-            result: $Utils.Optional<LaneGroupByOutputType>[]
+            args: Prisma.sessionsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SessionsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.LaneCountArgs<ExtArgs>
-            result: $Utils.Optional<LaneCountAggregateOutputType> | number
+            args: Prisma.sessionsCountArgs<ExtArgs>
+            result: $Utils.Optional<SessionsCountAggregateOutputType> | number
           }
         }
       }
-      Calendar: {
-        payload: Prisma.$CalendarPayload<ExtArgs>
-        fields: Prisma.CalendarFieldRefs
+      users: {
+        payload: Prisma.$usersPayload<ExtArgs>
+        fields: Prisma.usersFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CalendarFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload> | null
+            args: Prisma.usersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CalendarFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           findFirst: {
-            args: Prisma.CalendarFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload> | null
+            args: Prisma.usersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CalendarFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           findMany: {
-            args: Prisma.CalendarFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>[]
+            args: Prisma.usersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
           }
           create: {
-            args: Prisma.CalendarCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           createMany: {
-            args: Prisma.CalendarCreateManyArgs<ExtArgs>
+            args: Prisma.usersCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CalendarCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>[]
+            args: Prisma.usersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
           }
           delete: {
-            args: Prisma.CalendarDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           update: {
-            args: Prisma.CalendarUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           deleteMany: {
-            args: Prisma.CalendarDeleteManyArgs<ExtArgs>
+            args: Prisma.usersDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CalendarUpdateManyArgs<ExtArgs>
+            args: Prisma.usersUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CalendarUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>[]
+            args: Prisma.usersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
           }
           upsert: {
-            args: Prisma.CalendarUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CalendarPayload>
+            args: Prisma.usersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$usersPayload>
           }
           aggregate: {
-            args: Prisma.CalendarAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCalendar>
+            args: Prisma.UsersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsers>
           }
           groupBy: {
-            args: Prisma.CalendarGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CalendarGroupByOutputType>[]
+            args: Prisma.usersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsersGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CalendarCountArgs<ExtArgs>
-            result: $Utils.Optional<CalendarCountAggregateOutputType> | number
-          }
-        }
-      }
-      Note: {
-        payload: Prisma.$NotePayload<ExtArgs>
-        fields: Prisma.NoteFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.NoteFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.NoteFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          findFirst: {
-            args: Prisma.NoteFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.NoteFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          findMany: {
-            args: Prisma.NoteFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>[]
-          }
-          create: {
-            args: Prisma.NoteCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          createMany: {
-            args: Prisma.NoteCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.NoteCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>[]
-          }
-          delete: {
-            args: Prisma.NoteDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          update: {
-            args: Prisma.NoteUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          deleteMany: {
-            args: Prisma.NoteDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.NoteUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.NoteUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>[]
-          }
-          upsert: {
-            args: Prisma.NoteUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NotePayload>
-          }
-          aggregate: {
-            args: Prisma.NoteAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateNote>
-          }
-          groupBy: {
-            args: Prisma.NoteGroupByArgs<ExtArgs>
-            result: $Utils.Optional<NoteGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.NoteCountArgs<ExtArgs>
-            result: $Utils.Optional<NoteCountAggregateOutputType> | number
+            args: Prisma.usersCountArgs<ExtArgs>
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
           }
         }
       }
@@ -1051,10 +961,9 @@ export namespace Prisma {
     comments?: runtime.SqlCommenterPlugin[]
   }
   export type GlobalOmitConfig = {
-    user?: UserOmit
-    lane?: LaneOmit
-    calendar?: CalendarOmit
-    note?: NoteOmit
+    lanes?: lanesOmit
+    sessions?: sessionsOmit
+    users?: usersOmit
   }
 
   /* Types for Logging */
@@ -1131,82 +1040,64 @@ export namespace Prisma {
 
 
   /**
-   * Count Type UserCountOutputType
+   * Count Type LanesCountOutputType
    */
 
-  export type UserCountOutputType = {
-    lanes: number
-    calendars: number
-    notes: number
+  export type LanesCountOutputType = {
+    users: number
   }
 
-  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    lanes?: boolean | UserCountOutputTypeCountLanesArgs
-    calendars?: boolean | UserCountOutputTypeCountCalendarsArgs
-    notes?: boolean | UserCountOutputTypeCountNotesArgs
+  export type LanesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | LanesCountOutputTypeCountUsersArgs
   }
 
   // Custom InputTypes
   /**
-   * UserCountOutputType without action
+   * LanesCountOutputType without action
    */
-  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LanesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCountOutputType
+     * Select specific fields to fetch from the LanesCountOutputType
      */
-    select?: UserCountOutputTypeSelect<ExtArgs> | null
+    select?: LanesCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * UserCountOutputType without action
+   * LanesCountOutputType without action
    */
-  export type UserCountOutputTypeCountLanesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LaneWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCalendarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CalendarWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NoteWhereInput
+  export type LanesCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
   }
 
 
   /**
-   * Count Type LaneCountOutputType
+   * Count Type UsersCountOutputType
    */
 
-  export type LaneCountOutputType = {
-    notes: number
+  export type UsersCountOutputType = {
+    sessions: number
   }
 
-  export type LaneCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    notes?: boolean | LaneCountOutputTypeCountNotesArgs
+  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sessions?: boolean | UsersCountOutputTypeCountSessionsArgs
   }
 
   // Custom InputTypes
   /**
-   * LaneCountOutputType without action
+   * UsersCountOutputType without action
    */
-  export type LaneCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the LaneCountOutputType
+     * Select specific fields to fetch from the UsersCountOutputType
      */
-    select?: LaneCountOutputTypeSelect<ExtArgs> | null
+    select?: UsersCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * LaneCountOutputType without action
+   * UsersCountOutputType without action
    */
-  export type LaneCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NoteWhereInput
+  export type UsersCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sessionsWhereInput
   }
 
 
@@ -1215,1518 +1106,334 @@ export namespace Prisma {
    */
 
   /**
-   * Model User
+   * Model lanes
    */
 
-  export type AggregateUser = {
-    _count: UserCountAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+  export type AggregateLanes = {
+    _count: LanesCountAggregateOutputType | null
+    _min: LanesMinAggregateOutputType | null
+    _max: LanesMaxAggregateOutputType | null
   }
 
-  export type UserMinAggregateOutputType = {
+  export type LanesMinAggregateOutputType = {
     id: string | null
-    email: string | null
-    password: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    description: string | null
+    created_at: Date | null
   }
 
-  export type UserMaxAggregateOutputType = {
+  export type LanesMaxAggregateOutputType = {
     id: string | null
-    email: string | null
-    password: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    description: string | null
+    created_at: Date | null
   }
 
-  export type UserCountAggregateOutputType = {
+  export type LanesCountAggregateOutputType = {
     id: number
-    email: number
-    password: number
     name: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type UserMinAggregateInputType = {
-    id?: true
-    email?: true
-    password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type UserMaxAggregateInputType = {
-    id?: true
-    email?: true
-    password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type UserCountAggregateInputType = {
-    id?: true
-    email?: true
-    password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which User to aggregate.
-     */
-    where?: UserWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Users to fetch.
-     */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: UserWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Users
-    **/
-    _count?: true | UserCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: UserMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: UserMaxAggregateInputType
-  }
-
-  export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
-  }
-
-
-
-
-  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
-    by: UserScalarFieldEnum[] | UserScalarFieldEnum
-    having?: UserScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: UserCountAggregateInputType | true
-    _min?: UserMinAggregateInputType
-    _max?: UserMaxAggregateInputType
-  }
-
-  export type UserGroupByOutputType = {
-    id: string
-    email: string
-    password: string
-    name: string
-    createdAt: Date
-    updatedAt: Date
-    _count: UserCountAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
-  }
-
-  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UserGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    lanes?: boolean | User$lanesArgs<ExtArgs>
-    calendars?: boolean | User$calendarsArgs<ExtArgs>
-    notes?: boolean | User$notesArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user"]>
-
-  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["user"]>
-
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["user"]>
-
-  export type UserSelectScalar = {
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
-  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    lanes?: boolean | User$lanesArgs<ExtArgs>
-    calendars?: boolean | User$calendarsArgs<ExtArgs>
-    notes?: boolean | User$notesArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "User"
-    objects: {
-      lanes: Prisma.$LanePayload<ExtArgs>[]
-      calendars: Prisma.$CalendarPayload<ExtArgs>[]
-      notes: Prisma.$NotePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      email: string
-      password: string
-      name: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["user"]>
-    composites: {}
-  }
-
-  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
-
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserCountAggregateInputType | true
-    }
-
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
-    /**
-     * Find zero or one User that matches the filter.
-     * @param {UserFindUniqueArgs} args - Arguments to find a User
-     * @example
-     * // Get one User
-     * const user = await prisma.user.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one User that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
-     * @example
-     * // Get one User
-     * const user = await prisma.user.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first User that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstArgs} args - Arguments to find a User
-     * @example
-     * // Get one User
-     * const user = await prisma.user.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first User that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
-     * @example
-     * // Get one User
-     * const user = await prisma.user.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Users that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Users
-     * const users = await prisma.user.findMany()
-     * 
-     * // Get first 10 Users
-     * const users = await prisma.user.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a User.
-     * @param {UserCreateArgs} args - Arguments to create a User.
-     * @example
-     * // Create one User
-     * const User = await prisma.user.create({
-     *   data: {
-     *     // ... data to create a User
-     *   }
-     * })
-     * 
-     */
-    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Users.
-     * @param {UserCreateManyArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Users and returns the data saved in the database.
-     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a User.
-     * @param {UserDeleteArgs} args - Arguments to delete one User.
-     * @example
-     * // Delete one User
-     * const User = await prisma.user.delete({
-     *   where: {
-     *     // ... filter to delete one User
-     *   }
-     * })
-     * 
-     */
-    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one User.
-     * @param {UserUpdateArgs} args - Arguments to update one User.
-     * @example
-     * // Update one User
-     * const user = await prisma.user.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Users.
-     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
-     * @example
-     * // Delete a few Users
-     * const { count } = await prisma.user.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends UserDeleteManyArgs>(args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one User.
-     * @param {UserUpsertArgs} args - Arguments to update or create a User.
-     * @example
-     * // Update or create a User
-     * const user = await prisma.user.upsert({
-     *   create: {
-     *     // ... data to create a User
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the User we want to update
-     *   }
-     * })
-     */
-    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCountArgs} args - Arguments to filter Users to count.
-     * @example
-     * // Count the number of Users
-     * const count = await prisma.user.count({
-     *   where: {
-     *     // ... the filter for the Users we want to count
-     *   }
-     * })
-    **/
-    count<T extends UserCountArgs>(
-      args?: Subset<T, UserCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a User.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
-
-    /**
-     * Group by User.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends UserGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the User model
-   */
-  readonly fields: UserFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for User.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    lanes<T extends User$lanesArgs<ExtArgs> = {}>(args?: Subset<T, User$lanesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    calendars<T extends User$calendarsArgs<ExtArgs> = {}>(args?: Subset<T, User$calendarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the User model
-   */
-  interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'String'>
-    readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updatedAt: FieldRef<"User", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * User findUnique
-   */
-  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter, which User to fetch.
-     */
-    where: UserWhereUniqueInput
-  }
-
-  /**
-   * User findUniqueOrThrow
-   */
-  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter, which User to fetch.
-     */
-    where: UserWhereUniqueInput
-  }
-
-  /**
-   * User findFirst
-   */
-  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter, which User to fetch.
-     */
-    where?: UserWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Users to fetch.
-     */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Users.
-     */
-    cursor?: UserWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Users.
-     */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * User findFirstOrThrow
-   */
-  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter, which User to fetch.
-     */
-    where?: UserWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Users to fetch.
-     */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Users.
-     */
-    cursor?: UserWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Users.
-     */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * User findMany
-   */
-  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter, which Users to fetch.
-     */
-    where?: UserWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Users to fetch.
-     */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Users.
-     */
-    cursor?: UserWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Users.
-     */
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
-   * User create
-   */
-  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * The data needed to create a User.
-     */
-    data: XOR<UserCreateInput, UserUncheckedCreateInput>
-  }
-
-  /**
-   * User createMany
-   */
-  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Users.
-     */
-    data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * User createManyAndReturn
-   */
-  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to create many Users.
-     */
-    data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * User update
-   */
-  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * The data needed to update a User.
-     */
-    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
-    /**
-     * Choose, which User to update.
-     */
-    where: UserWhereUniqueInput
-  }
-
-  /**
-   * User updateMany
-   */
-  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * User updateManyAndReturn
-   */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * User upsert
-   */
-  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * The filter to search for the User to update in case it exists.
-     */
-    where: UserWhereUniqueInput
-    /**
-     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
-     */
-    create: XOR<UserCreateInput, UserUncheckedCreateInput>
-    /**
-     * In case the User was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
-  }
-
-  /**
-   * User delete
-   */
-  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * Filter which User to delete.
-     */
-    where: UserWhereUniqueInput
-  }
-
-  /**
-   * User deleteMany
-   */
-  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Users to delete
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * User.lanes
-   */
-  export type User$lanesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Lane
-     */
-    select?: LaneSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lane
-     */
-    omit?: LaneOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LaneInclude<ExtArgs> | null
-    where?: LaneWhereInput
-    orderBy?: LaneOrderByWithRelationInput | LaneOrderByWithRelationInput[]
-    cursor?: LaneWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LaneScalarFieldEnum | LaneScalarFieldEnum[]
-  }
-
-  /**
-   * User.calendars
-   */
-  export type User$calendarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Calendar
-     */
-    select?: CalendarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Calendar
-     */
-    omit?: CalendarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CalendarInclude<ExtArgs> | null
-    where?: CalendarWhereInput
-    orderBy?: CalendarOrderByWithRelationInput | CalendarOrderByWithRelationInput[]
-    cursor?: CalendarWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CalendarScalarFieldEnum | CalendarScalarFieldEnum[]
-  }
-
-  /**
-   * User.notes
-   */
-  export type User$notesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Note
-     */
-    select?: NoteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Note
-     */
-    omit?: NoteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: NoteInclude<ExtArgs> | null
-    where?: NoteWhereInput
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
-    cursor?: NoteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
-  }
-
-  /**
-   * User without action
-   */
-  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Lane
-   */
-
-  export type AggregateLane = {
-    _count: LaneCountAggregateOutputType | null
-    _min: LaneMinAggregateOutputType | null
-    _max: LaneMaxAggregateOutputType | null
-  }
-
-  export type LaneMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    color: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type LaneMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    color: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type LaneCountAggregateOutputType = {
-    id: number
-    title: number
     description: number
-    color: number
-    userId: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
     _all: number
   }
 
 
-  export type LaneMinAggregateInputType = {
+  export type LanesMinAggregateInputType = {
     id?: true
-    title?: true
+    name?: true
     description?: true
-    color?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
   }
 
-  export type LaneMaxAggregateInputType = {
+  export type LanesMaxAggregateInputType = {
     id?: true
-    title?: true
+    name?: true
     description?: true
-    color?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
   }
 
-  export type LaneCountAggregateInputType = {
+  export type LanesCountAggregateInputType = {
     id?: true
-    title?: true
+    name?: true
     description?: true
-    color?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
     _all?: true
   }
 
-  export type LaneAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LanesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Lane to aggregate.
+     * Filter which lanes to aggregate.
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Lanes to fetch.
+     * Determine the order of lanes to fetch.
      */
-    orderBy?: LaneOrderByWithRelationInput | LaneOrderByWithRelationInput[]
+    orderBy?: lanesOrderByWithRelationInput | lanesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: LaneWhereUniqueInput
+    cursor?: lanesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Lanes from the position of the cursor.
+     * Take `±n` lanes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Lanes.
+     * Skip the first `n` lanes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Lanes
+     * Count returned lanes
     **/
-    _count?: true | LaneCountAggregateInputType
+    _count?: true | LanesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: LaneMinAggregateInputType
+    _min?: LanesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: LaneMaxAggregateInputType
+    _max?: LanesMaxAggregateInputType
   }
 
-  export type GetLaneAggregateType<T extends LaneAggregateArgs> = {
-        [P in keyof T & keyof AggregateLane]: P extends '_count' | 'count'
+  export type GetLanesAggregateType<T extends LanesAggregateArgs> = {
+        [P in keyof T & keyof AggregateLanes]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateLane[P]>
-      : GetScalarType<T[P], AggregateLane[P]>
+        : GetScalarType<T[P], AggregateLanes[P]>
+      : GetScalarType<T[P], AggregateLanes[P]>
   }
 
 
 
 
-  export type LaneGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LaneWhereInput
-    orderBy?: LaneOrderByWithAggregationInput | LaneOrderByWithAggregationInput[]
-    by: LaneScalarFieldEnum[] | LaneScalarFieldEnum
-    having?: LaneScalarWhereWithAggregatesInput
+  export type lanesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: lanesWhereInput
+    orderBy?: lanesOrderByWithAggregationInput | lanesOrderByWithAggregationInput[]
+    by: LanesScalarFieldEnum[] | LanesScalarFieldEnum
+    having?: lanesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: LaneCountAggregateInputType | true
-    _min?: LaneMinAggregateInputType
-    _max?: LaneMaxAggregateInputType
+    _count?: LanesCountAggregateInputType | true
+    _min?: LanesMinAggregateInputType
+    _max?: LanesMaxAggregateInputType
   }
 
-  export type LaneGroupByOutputType = {
+  export type LanesGroupByOutputType = {
     id: string
-    title: string
+    name: string
     description: string | null
-    color: string | null
-    userId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: LaneCountAggregateOutputType | null
-    _min: LaneMinAggregateOutputType | null
-    _max: LaneMaxAggregateOutputType | null
+    created_at: Date | null
+    _count: LanesCountAggregateOutputType | null
+    _min: LanesMinAggregateOutputType | null
+    _max: LanesMaxAggregateOutputType | null
   }
 
-  type GetLaneGroupByPayload<T extends LaneGroupByArgs> = Prisma.PrismaPromise<
+  type GetLanesGroupByPayload<T extends lanesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<LaneGroupByOutputType, T['by']> &
+      PickEnumerable<LanesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof LaneGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof LanesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], LaneGroupByOutputType[P]>
-            : GetScalarType<T[P], LaneGroupByOutputType[P]>
+              : GetScalarType<T[P], LanesGroupByOutputType[P]>
+            : GetScalarType<T[P], LanesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type LaneSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type lanesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
+    name?: boolean
     description?: boolean
-    color?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    notes?: boolean | Lane$notesArgs<ExtArgs>
-    _count?: boolean | LaneCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["lane"]>
+    created_at?: boolean
+    users?: boolean | lanes$usersArgs<ExtArgs>
+    _count?: boolean | LanesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lanes"]>
 
-  export type LaneSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type lanesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
+    name?: boolean
     description?: boolean
-    color?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["lane"]>
+    created_at?: boolean
+  }, ExtArgs["result"]["lanes"]>
 
-  export type LaneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type lanesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
+    name?: boolean
     description?: boolean
-    color?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["lane"]>
+    created_at?: boolean
+  }, ExtArgs["result"]["lanes"]>
 
-  export type LaneSelectScalar = {
+  export type lanesSelectScalar = {
     id?: boolean
-    title?: boolean
+    name?: boolean
     description?: boolean
-    color?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
   }
 
-  export type LaneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "color" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["lane"]>
-  export type LaneInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    notes?: boolean | Lane$notesArgs<ExtArgs>
-    _count?: boolean | LaneCountOutputTypeDefaultArgs<ExtArgs>
+  export type lanesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "created_at", ExtArgs["result"]["lanes"]>
+  export type lanesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | lanes$usersArgs<ExtArgs>
+    _count?: boolean | LanesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type LaneIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type LaneIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
+  export type lanesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type lanesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $LanePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Lane"
+  export type $lanesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "lanes"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      notes: Prisma.$NotePayload<ExtArgs>[]
+      users: Prisma.$usersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
+      name: string
       description: string | null
-      color: string | null
-      userId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["lane"]>
+      created_at: Date | null
+    }, ExtArgs["result"]["lanes"]>
     composites: {}
   }
 
-  type LaneGetPayload<S extends boolean | null | undefined | LaneDefaultArgs> = $Result.GetResult<Prisma.$LanePayload, S>
+  type lanesGetPayload<S extends boolean | null | undefined | lanesDefaultArgs> = $Result.GetResult<Prisma.$lanesPayload, S>
 
-  type LaneCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<LaneFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: LaneCountAggregateInputType | true
+  type lanesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<lanesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LanesCountAggregateInputType | true
     }
 
-  export interface LaneDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lane'], meta: { name: 'Lane' } }
+  export interface lanesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['lanes'], meta: { name: 'lanes' } }
     /**
-     * Find zero or one Lane that matches the filter.
-     * @param {LaneFindUniqueArgs} args - Arguments to find a Lane
+     * Find zero or one Lanes that matches the filter.
+     * @param {lanesFindUniqueArgs} args - Arguments to find a Lanes
      * @example
-     * // Get one Lane
-     * const lane = await prisma.lane.findUnique({
+     * // Get one Lanes
+     * const lanes = await prisma.lanes.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends LaneFindUniqueArgs>(args: SelectSubset<T, LaneFindUniqueArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends lanesFindUniqueArgs>(args: SelectSubset<T, lanesFindUniqueArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Lane that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Lanes that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {LaneFindUniqueOrThrowArgs} args - Arguments to find a Lane
+     * @param {lanesFindUniqueOrThrowArgs} args - Arguments to find a Lanes
      * @example
-     * // Get one Lane
-     * const lane = await prisma.lane.findUniqueOrThrow({
+     * // Get one Lanes
+     * const lanes = await prisma.lanes.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LaneFindUniqueOrThrowArgs>(args: SelectSubset<T, LaneFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends lanesFindUniqueOrThrowArgs>(args: SelectSubset<T, lanesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Lane that matches the filter.
+     * Find the first Lanes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneFindFirstArgs} args - Arguments to find a Lane
+     * @param {lanesFindFirstArgs} args - Arguments to find a Lanes
      * @example
-     * // Get one Lane
-     * const lane = await prisma.lane.findFirst({
+     * // Get one Lanes
+     * const lanes = await prisma.lanes.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends LaneFindFirstArgs>(args?: SelectSubset<T, LaneFindFirstArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends lanesFindFirstArgs>(args?: SelectSubset<T, lanesFindFirstArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Lane that matches the filter or
+     * Find the first Lanes that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneFindFirstOrThrowArgs} args - Arguments to find a Lane
+     * @param {lanesFindFirstOrThrowArgs} args - Arguments to find a Lanes
      * @example
-     * // Get one Lane
-     * const lane = await prisma.lane.findFirstOrThrow({
+     * // Get one Lanes
+     * const lanes = await prisma.lanes.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends LaneFindFirstOrThrowArgs>(args?: SelectSubset<T, LaneFindFirstOrThrowArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends lanesFindFirstOrThrowArgs>(args?: SelectSubset<T, lanesFindFirstOrThrowArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Lanes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {lanesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Lanes
-     * const lanes = await prisma.lane.findMany()
+     * const lanes = await prisma.lanes.findMany()
      * 
      * // Get first 10 Lanes
-     * const lanes = await prisma.lane.findMany({ take: 10 })
+     * const lanes = await prisma.lanes.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const laneWithIdOnly = await prisma.lane.findMany({ select: { id: true } })
+     * const lanesWithIdOnly = await prisma.lanes.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends LaneFindManyArgs>(args?: SelectSubset<T, LaneFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends lanesFindManyArgs>(args?: SelectSubset<T, lanesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Lane.
-     * @param {LaneCreateArgs} args - Arguments to create a Lane.
+     * Create a Lanes.
+     * @param {lanesCreateArgs} args - Arguments to create a Lanes.
      * @example
-     * // Create one Lane
-     * const Lane = await prisma.lane.create({
+     * // Create one Lanes
+     * const Lanes = await prisma.lanes.create({
      *   data: {
-     *     // ... data to create a Lane
+     *     // ... data to create a Lanes
      *   }
      * })
      * 
      */
-    create<T extends LaneCreateArgs>(args: SelectSubset<T, LaneCreateArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends lanesCreateArgs>(args: SelectSubset<T, lanesCreateArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Lanes.
-     * @param {LaneCreateManyArgs} args - Arguments to create many Lanes.
+     * @param {lanesCreateManyArgs} args - Arguments to create many Lanes.
      * @example
      * // Create many Lanes
-     * const lane = await prisma.lane.createMany({
+     * const lanes = await prisma.lanes.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends LaneCreateManyArgs>(args?: SelectSubset<T, LaneCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends lanesCreateManyArgs>(args?: SelectSubset<T, lanesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Lanes and returns the data saved in the database.
-     * @param {LaneCreateManyAndReturnArgs} args - Arguments to create many Lanes.
+     * @param {lanesCreateManyAndReturnArgs} args - Arguments to create many Lanes.
      * @example
      * // Create many Lanes
-     * const lane = await prisma.lane.createManyAndReturn({
+     * const lanes = await prisma.lanes.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Lanes and only return the `id`
-     * const laneWithIdOnly = await prisma.lane.createManyAndReturn({
+     * const lanesWithIdOnly = await prisma.lanes.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2736,28 +1443,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends LaneCreateManyAndReturnArgs>(args?: SelectSubset<T, LaneCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends lanesCreateManyAndReturnArgs>(args?: SelectSubset<T, lanesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Lane.
-     * @param {LaneDeleteArgs} args - Arguments to delete one Lane.
+     * Delete a Lanes.
+     * @param {lanesDeleteArgs} args - Arguments to delete one Lanes.
      * @example
-     * // Delete one Lane
-     * const Lane = await prisma.lane.delete({
+     * // Delete one Lanes
+     * const Lanes = await prisma.lanes.delete({
      *   where: {
-     *     // ... filter to delete one Lane
+     *     // ... filter to delete one Lanes
      *   }
      * })
      * 
      */
-    delete<T extends LaneDeleteArgs>(args: SelectSubset<T, LaneDeleteArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends lanesDeleteArgs>(args: SelectSubset<T, lanesDeleteArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Lane.
-     * @param {LaneUpdateArgs} args - Arguments to update one Lane.
+     * Update one Lanes.
+     * @param {lanesUpdateArgs} args - Arguments to update one Lanes.
      * @example
-     * // Update one Lane
-     * const lane = await prisma.lane.update({
+     * // Update one Lanes
+     * const lanes = await prisma.lanes.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2767,30 +1474,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends LaneUpdateArgs>(args: SelectSubset<T, LaneUpdateArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends lanesUpdateArgs>(args: SelectSubset<T, lanesUpdateArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Lanes.
-     * @param {LaneDeleteManyArgs} args - Arguments to filter Lanes to delete.
+     * @param {lanesDeleteManyArgs} args - Arguments to filter Lanes to delete.
      * @example
      * // Delete a few Lanes
-     * const { count } = await prisma.lane.deleteMany({
+     * const { count } = await prisma.lanes.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends LaneDeleteManyArgs>(args?: SelectSubset<T, LaneDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends lanesDeleteManyArgs>(args?: SelectSubset<T, lanesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Lanes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {lanesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Lanes
-     * const lane = await prisma.lane.updateMany({
+     * const lanes = await prisma.lanes.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2800,14 +1507,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends LaneUpdateManyArgs>(args: SelectSubset<T, LaneUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends lanesUpdateManyArgs>(args: SelectSubset<T, lanesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Lanes and returns the data updated in the database.
-     * @param {LaneUpdateManyAndReturnArgs} args - Arguments to update many Lanes.
+     * @param {lanesUpdateManyAndReturnArgs} args - Arguments to update many Lanes.
      * @example
      * // Update many Lanes
-     * const lane = await prisma.lane.updateManyAndReturn({
+     * const lanes = await prisma.lanes.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2817,7 +1524,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Lanes and only return the `id`
-     * const laneWithIdOnly = await prisma.lane.updateManyAndReturn({
+     * const lanesWithIdOnly = await prisma.lanes.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2830,56 +1537,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends LaneUpdateManyAndReturnArgs>(args: SelectSubset<T, LaneUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends lanesUpdateManyAndReturnArgs>(args: SelectSubset<T, lanesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Lane.
-     * @param {LaneUpsertArgs} args - Arguments to update or create a Lane.
+     * Create or update one Lanes.
+     * @param {lanesUpsertArgs} args - Arguments to update or create a Lanes.
      * @example
-     * // Update or create a Lane
-     * const lane = await prisma.lane.upsert({
+     * // Update or create a Lanes
+     * const lanes = await prisma.lanes.upsert({
      *   create: {
-     *     // ... data to create a Lane
+     *     // ... data to create a Lanes
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Lane we want to update
+     *     // ... the filter for the Lanes we want to update
      *   }
      * })
      */
-    upsert<T extends LaneUpsertArgs>(args: SelectSubset<T, LaneUpsertArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends lanesUpsertArgs>(args: SelectSubset<T, lanesUpsertArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Lanes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneCountArgs} args - Arguments to filter Lanes to count.
+     * @param {lanesCountArgs} args - Arguments to filter Lanes to count.
      * @example
      * // Count the number of Lanes
-     * const count = await prisma.lane.count({
+     * const count = await prisma.lanes.count({
      *   where: {
      *     // ... the filter for the Lanes we want to count
      *   }
      * })
     **/
-    count<T extends LaneCountArgs>(
-      args?: Subset<T, LaneCountArgs>,
+    count<T extends lanesCountArgs>(
+      args?: Subset<T, lanesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], LaneCountAggregateOutputType>
+          : GetScalarType<T['select'], LanesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Lane.
+     * Allows you to perform aggregations operations on a Lanes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {LanesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2899,13 +1606,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends LaneAggregateArgs>(args: Subset<T, LaneAggregateArgs>): Prisma.PrismaPromise<GetLaneAggregateType<T>>
+    aggregate<T extends LanesAggregateArgs>(args: Subset<T, LanesAggregateArgs>): Prisma.PrismaPromise<GetLanesAggregateType<T>>
 
     /**
-     * Group by Lane.
+     * Group by Lanes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LaneGroupByArgs} args - Group by arguments.
+     * @param {lanesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2920,14 +1627,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends LaneGroupByArgs,
+      T extends lanesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: LaneGroupByArgs['orderBy'] }
-        : { orderBy?: LaneGroupByArgs['orderBy'] },
+        ? { orderBy: lanesGroupByArgs['orderBy'] }
+        : { orderBy?: lanesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2976,23 +1683,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, LaneGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLaneGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, lanesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLanesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Lane model
+   * Fields of the lanes model
    */
-  readonly fields: LaneFieldRefs;
+  readonly fields: lanesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Lane.
+   * The delegate class that acts as a "Promise-like" for lanes.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LaneClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__lanesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    notes<T extends Lane$notesArgs<ExtArgs> = {}>(args?: Subset<T, Lane$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends lanes$usersArgs<ExtArgs> = {}>(args?: Subset<T, lanes$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3019,847 +1725,812 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Lane model
+   * Fields of the lanes model
    */
-  interface LaneFieldRefs {
-    readonly id: FieldRef<"Lane", 'String'>
-    readonly title: FieldRef<"Lane", 'String'>
-    readonly description: FieldRef<"Lane", 'String'>
-    readonly color: FieldRef<"Lane", 'String'>
-    readonly userId: FieldRef<"Lane", 'String'>
-    readonly createdAt: FieldRef<"Lane", 'DateTime'>
-    readonly updatedAt: FieldRef<"Lane", 'DateTime'>
+  interface lanesFieldRefs {
+    readonly id: FieldRef<"lanes", 'String'>
+    readonly name: FieldRef<"lanes", 'String'>
+    readonly description: FieldRef<"lanes", 'String'>
+    readonly created_at: FieldRef<"lanes", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Lane findUnique
+   * lanes findUnique
    */
-  export type LaneFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * Filter, which Lane to fetch.
+     * Filter, which lanes to fetch.
      */
-    where: LaneWhereUniqueInput
+    where: lanesWhereUniqueInput
   }
 
   /**
-   * Lane findUniqueOrThrow
+   * lanes findUniqueOrThrow
    */
-  export type LaneFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * Filter, which Lane to fetch.
+     * Filter, which lanes to fetch.
      */
-    where: LaneWhereUniqueInput
+    where: lanesWhereUniqueInput
   }
 
   /**
-   * Lane findFirst
+   * lanes findFirst
    */
-  export type LaneFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * Filter, which Lane to fetch.
+     * Filter, which lanes to fetch.
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Lanes to fetch.
+     * Determine the order of lanes to fetch.
      */
-    orderBy?: LaneOrderByWithRelationInput | LaneOrderByWithRelationInput[]
+    orderBy?: lanesOrderByWithRelationInput | lanesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Lanes.
+     * Sets the position for searching for lanes.
      */
-    cursor?: LaneWhereUniqueInput
+    cursor?: lanesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Lanes from the position of the cursor.
+     * Take `±n` lanes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Lanes.
+     * Skip the first `n` lanes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Lanes.
+     * Filter by unique combinations of lanes.
      */
-    distinct?: LaneScalarFieldEnum | LaneScalarFieldEnum[]
+    distinct?: LanesScalarFieldEnum | LanesScalarFieldEnum[]
   }
 
   /**
-   * Lane findFirstOrThrow
+   * lanes findFirstOrThrow
    */
-  export type LaneFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * Filter, which Lane to fetch.
+     * Filter, which lanes to fetch.
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Lanes to fetch.
+     * Determine the order of lanes to fetch.
      */
-    orderBy?: LaneOrderByWithRelationInput | LaneOrderByWithRelationInput[]
+    orderBy?: lanesOrderByWithRelationInput | lanesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Lanes.
+     * Sets the position for searching for lanes.
      */
-    cursor?: LaneWhereUniqueInput
+    cursor?: lanesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Lanes from the position of the cursor.
+     * Take `±n` lanes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Lanes.
+     * Skip the first `n` lanes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Lanes.
+     * Filter by unique combinations of lanes.
      */
-    distinct?: LaneScalarFieldEnum | LaneScalarFieldEnum[]
+    distinct?: LanesScalarFieldEnum | LanesScalarFieldEnum[]
   }
 
   /**
-   * Lane findMany
+   * lanes findMany
    */
-  export type LaneFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * Filter, which Lanes to fetch.
+     * Filter, which lanes to fetch.
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Lanes to fetch.
+     * Determine the order of lanes to fetch.
      */
-    orderBy?: LaneOrderByWithRelationInput | LaneOrderByWithRelationInput[]
+    orderBy?: lanesOrderByWithRelationInput | lanesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Lanes.
+     * Sets the position for listing lanes.
      */
-    cursor?: LaneWhereUniqueInput
+    cursor?: lanesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Lanes from the position of the cursor.
+     * Take `±n` lanes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Lanes.
+     * Skip the first `n` lanes.
      */
     skip?: number
-    distinct?: LaneScalarFieldEnum | LaneScalarFieldEnum[]
+    distinct?: LanesScalarFieldEnum | LanesScalarFieldEnum[]
   }
 
   /**
-   * Lane create
+   * lanes create
    */
-  export type LaneCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * The data needed to create a Lane.
+     * The data needed to create a lanes.
      */
-    data: XOR<LaneCreateInput, LaneUncheckedCreateInput>
+    data: XOR<lanesCreateInput, lanesUncheckedCreateInput>
   }
 
   /**
-   * Lane createMany
+   * lanes createMany
    */
-  export type LaneCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Lanes.
+     * The data used to create many lanes.
      */
-    data: LaneCreateManyInput | LaneCreateManyInput[]
+    data: lanesCreateManyInput | lanesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Lane createManyAndReturn
+   * lanes createManyAndReturn
    */
-  export type LaneCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelectCreateManyAndReturn<ExtArgs> | null
+    select?: lanesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
-     * The data used to create many Lanes.
+     * The data used to create many lanes.
      */
-    data: LaneCreateManyInput | LaneCreateManyInput[]
+    data: lanesCreateManyInput | lanesCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LaneIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Lane update
+   * lanes update
    */
-  export type LaneUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
     /**
-     * The data needed to update a Lane.
+     * The data needed to update a lanes.
      */
-    data: XOR<LaneUpdateInput, LaneUncheckedUpdateInput>
+    data: XOR<lanesUpdateInput, lanesUncheckedUpdateInput>
     /**
-     * Choose, which Lane to update.
+     * Choose, which lanes to update.
      */
-    where: LaneWhereUniqueInput
+    where: lanesWhereUniqueInput
   }
 
   /**
-   * Lane updateMany
+   * lanes updateMany
    */
-  export type LaneUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Lanes.
+     * The data used to update lanes.
      */
-    data: XOR<LaneUpdateManyMutationInput, LaneUncheckedUpdateManyInput>
+    data: XOR<lanesUpdateManyMutationInput, lanesUncheckedUpdateManyInput>
     /**
-     * Filter which Lanes to update
+     * Filter which lanes to update
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
-     * Limit how many Lanes to update.
+     * Limit how many lanes to update.
      */
     limit?: number
   }
 
   /**
-   * Lane updateManyAndReturn
+   * lanes updateManyAndReturn
    */
-  export type LaneUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: lanesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
-     * The data used to update Lanes.
+     * The data used to update lanes.
      */
-    data: XOR<LaneUpdateManyMutationInput, LaneUncheckedUpdateManyInput>
+    data: XOR<lanesUpdateManyMutationInput, lanesUncheckedUpdateManyInput>
     /**
-     * Filter which Lanes to update
+     * Filter which lanes to update
      */
-    where?: LaneWhereInput
+    where?: lanesWhereInput
     /**
-     * Limit how many Lanes to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LaneIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Lane upsert
-   */
-  export type LaneUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Lane
-     */
-    select?: LaneSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lane
-     */
-    omit?: LaneOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LaneInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Lane to update in case it exists.
-     */
-    where: LaneWhereUniqueInput
-    /**
-     * In case the Lane found by the `where` argument doesn't exist, create a new Lane with this data.
-     */
-    create: XOR<LaneCreateInput, LaneUncheckedCreateInput>
-    /**
-     * In case the Lane was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<LaneUpdateInput, LaneUncheckedUpdateInput>
-  }
-
-  /**
-   * Lane delete
-   */
-  export type LaneDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Lane
-     */
-    select?: LaneSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Lane
-     */
-    omit?: LaneOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LaneInclude<ExtArgs> | null
-    /**
-     * Filter which Lane to delete.
-     */
-    where: LaneWhereUniqueInput
-  }
-
-  /**
-   * Lane deleteMany
-   */
-  export type LaneDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Lanes to delete
-     */
-    where?: LaneWhereInput
-    /**
-     * Limit how many Lanes to delete.
+     * Limit how many lanes to update.
      */
     limit?: number
   }
 
   /**
-   * Lane.notes
+   * lanes upsert
    */
-  export type Lane$notesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the lanes
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the lanes
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
-    where?: NoteWhereInput
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
-    cursor?: NoteWhereUniqueInput
+    include?: lanesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the lanes to update in case it exists.
+     */
+    where: lanesWhereUniqueInput
+    /**
+     * In case the lanes found by the `where` argument doesn't exist, create a new lanes with this data.
+     */
+    create: XOR<lanesCreateInput, lanesUncheckedCreateInput>
+    /**
+     * In case the lanes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<lanesUpdateInput, lanesUncheckedUpdateInput>
+  }
+
+  /**
+   * lanes delete
+   */
+  export type lanesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the lanes
+     */
+    select?: lanesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the lanes
+     */
+    omit?: lanesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: lanesInclude<ExtArgs> | null
+    /**
+     * Filter which lanes to delete.
+     */
+    where: lanesWhereUniqueInput
+  }
+
+  /**
+   * lanes deleteMany
+   */
+  export type lanesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which lanes to delete
+     */
+    where?: lanesWhereInput
+    /**
+     * Limit how many lanes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * lanes.users
+   */
+  export type lanes$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    cursor?: usersWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
   /**
-   * Lane without action
+   * lanes without action
    */
-  export type LaneDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type lanesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the lanes
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the lanes
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Calendar
+   * Model sessions
    */
 
-  export type AggregateCalendar = {
-    _count: CalendarCountAggregateOutputType | null
-    _min: CalendarMinAggregateOutputType | null
-    _max: CalendarMaxAggregateOutputType | null
+  export type AggregateSessions = {
+    _count: SessionsCountAggregateOutputType | null
+    _min: SessionsMinAggregateOutputType | null
+    _max: SessionsMaxAggregateOutputType | null
   }
 
-  export type CalendarMinAggregateOutputType = {
+  export type SessionsMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
-    date: Date | null
-    endDate: Date | null
-    isAllDay: boolean | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    user_id: string | null
+    refresh_token: string | null
+    user_agent: string | null
+    ip_address: string | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
-  export type CalendarMaxAggregateOutputType = {
+  export type SessionsMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
-    date: Date | null
-    endDate: Date | null
-    isAllDay: boolean | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    user_id: string | null
+    refresh_token: string | null
+    user_agent: string | null
+    ip_address: string | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
-  export type CalendarCountAggregateOutputType = {
+  export type SessionsCountAggregateOutputType = {
     id: number
-    title: number
-    description: number
-    date: number
-    endDate: number
-    isAllDay: number
-    userId: number
-    createdAt: number
-    updatedAt: number
+    user_id: number
+    refresh_token: number
+    user_agent: number
+    ip_address: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
 
-  export type CalendarMinAggregateInputType = {
+  export type SessionsMinAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    date?: true
-    endDate?: true
-    isAllDay?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    user_id?: true
+    refresh_token?: true
+    user_agent?: true
+    ip_address?: true
+    created_at?: true
+    updated_at?: true
   }
 
-  export type CalendarMaxAggregateInputType = {
+  export type SessionsMaxAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    date?: true
-    endDate?: true
-    isAllDay?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    user_id?: true
+    refresh_token?: true
+    user_agent?: true
+    ip_address?: true
+    created_at?: true
+    updated_at?: true
   }
 
-  export type CalendarCountAggregateInputType = {
+  export type SessionsCountAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
-    date?: true
-    endDate?: true
-    isAllDay?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    user_id?: true
+    refresh_token?: true
+    user_agent?: true
+    ip_address?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
-  export type CalendarAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Calendar to aggregate.
+     * Filter which sessions to aggregate.
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Calendars to fetch.
+     * Determine the order of sessions to fetch.
      */
-    orderBy?: CalendarOrderByWithRelationInput | CalendarOrderByWithRelationInput[]
+    orderBy?: sessionsOrderByWithRelationInput | sessionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CalendarWhereUniqueInput
+    cursor?: sessionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Calendars from the position of the cursor.
+     * Take `±n` sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Calendars.
+     * Skip the first `n` sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Calendars
+     * Count returned sessions
     **/
-    _count?: true | CalendarCountAggregateInputType
+    _count?: true | SessionsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CalendarMinAggregateInputType
+    _min?: SessionsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CalendarMaxAggregateInputType
+    _max?: SessionsMaxAggregateInputType
   }
 
-  export type GetCalendarAggregateType<T extends CalendarAggregateArgs> = {
-        [P in keyof T & keyof AggregateCalendar]: P extends '_count' | 'count'
+  export type GetSessionsAggregateType<T extends SessionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSessions]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCalendar[P]>
-      : GetScalarType<T[P], AggregateCalendar[P]>
+        : GetScalarType<T[P], AggregateSessions[P]>
+      : GetScalarType<T[P], AggregateSessions[P]>
   }
 
 
 
 
-  export type CalendarGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CalendarWhereInput
-    orderBy?: CalendarOrderByWithAggregationInput | CalendarOrderByWithAggregationInput[]
-    by: CalendarScalarFieldEnum[] | CalendarScalarFieldEnum
-    having?: CalendarScalarWhereWithAggregatesInput
+  export type sessionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: sessionsWhereInput
+    orderBy?: sessionsOrderByWithAggregationInput | sessionsOrderByWithAggregationInput[]
+    by: SessionsScalarFieldEnum[] | SessionsScalarFieldEnum
+    having?: sessionsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CalendarCountAggregateInputType | true
-    _min?: CalendarMinAggregateInputType
-    _max?: CalendarMaxAggregateInputType
+    _count?: SessionsCountAggregateInputType | true
+    _min?: SessionsMinAggregateInputType
+    _max?: SessionsMaxAggregateInputType
   }
 
-  export type CalendarGroupByOutputType = {
+  export type SessionsGroupByOutputType = {
     id: string
-    title: string
-    description: string | null
-    date: Date
-    endDate: Date | null
-    isAllDay: boolean
-    userId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: CalendarCountAggregateOutputType | null
-    _min: CalendarMinAggregateOutputType | null
-    _max: CalendarMaxAggregateOutputType | null
+    user_id: string
+    refresh_token: string
+    user_agent: string | null
+    ip_address: string | null
+    created_at: Date
+    updated_at: Date
+    _count: SessionsCountAggregateOutputType | null
+    _min: SessionsMinAggregateOutputType | null
+    _max: SessionsMaxAggregateOutputType | null
   }
 
-  type GetCalendarGroupByPayload<T extends CalendarGroupByArgs> = Prisma.PrismaPromise<
+  type GetSessionsGroupByPayload<T extends sessionsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CalendarGroupByOutputType, T['by']> &
+      PickEnumerable<SessionsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CalendarGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SessionsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CalendarGroupByOutputType[P]>
-            : GetScalarType<T[P], CalendarGroupByOutputType[P]>
+              : GetScalarType<T[P], SessionsGroupByOutputType[P]>
+            : GetScalarType<T[P], SessionsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CalendarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type sessionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
-    date?: boolean
-    endDate?: boolean
-    isAllDay?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["calendar"]>
+    user_id?: boolean
+    refresh_token?: boolean
+    user_agent?: boolean
+    ip_address?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sessions"]>
 
-  export type CalendarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type sessionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
-    date?: boolean
-    endDate?: boolean
-    isAllDay?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["calendar"]>
+    user_id?: boolean
+    refresh_token?: boolean
+    user_agent?: boolean
+    ip_address?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sessions"]>
 
-  export type CalendarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type sessionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
-    date?: boolean
-    endDate?: boolean
-    isAllDay?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["calendar"]>
+    user_id?: boolean
+    refresh_token?: boolean
+    user_agent?: boolean
+    ip_address?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sessions"]>
 
-  export type CalendarSelectScalar = {
+  export type sessionsSelectScalar = {
     id?: boolean
-    title?: boolean
-    description?: boolean
-    date?: boolean
-    endDate?: boolean
-    isAllDay?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    user_id?: boolean
+    refresh_token?: boolean
+    user_agent?: boolean
+    ip_address?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CalendarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "date" | "endDate" | "isAllDay" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["calendar"]>
-  export type CalendarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type sessionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "refresh_token" | "user_agent" | "ip_address" | "created_at" | "updated_at", ExtArgs["result"]["sessions"]>
+  export type sessionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
-  export type CalendarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type sessionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
-  export type CalendarIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  export type sessionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }
 
-  export type $CalendarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Calendar"
+  export type $sessionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "sessions"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      users: Prisma.$usersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      description: string | null
-      date: Date
-      endDate: Date | null
-      isAllDay: boolean
-      userId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["calendar"]>
+      user_id: string
+      refresh_token: string
+      user_agent: string | null
+      ip_address: string | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["sessions"]>
     composites: {}
   }
 
-  type CalendarGetPayload<S extends boolean | null | undefined | CalendarDefaultArgs> = $Result.GetResult<Prisma.$CalendarPayload, S>
+  type sessionsGetPayload<S extends boolean | null | undefined | sessionsDefaultArgs> = $Result.GetResult<Prisma.$sessionsPayload, S>
 
-  type CalendarCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CalendarFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CalendarCountAggregateInputType | true
+  type sessionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<sessionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SessionsCountAggregateInputType | true
     }
 
-  export interface CalendarDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Calendar'], meta: { name: 'Calendar' } }
+  export interface sessionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['sessions'], meta: { name: 'sessions' } }
     /**
-     * Find zero or one Calendar that matches the filter.
-     * @param {CalendarFindUniqueArgs} args - Arguments to find a Calendar
+     * Find zero or one Sessions that matches the filter.
+     * @param {sessionsFindUniqueArgs} args - Arguments to find a Sessions
      * @example
-     * // Get one Calendar
-     * const calendar = await prisma.calendar.findUnique({
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CalendarFindUniqueArgs>(args: SelectSubset<T, CalendarFindUniqueArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends sessionsFindUniqueArgs>(args: SelectSubset<T, sessionsFindUniqueArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Calendar that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Sessions that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CalendarFindUniqueOrThrowArgs} args - Arguments to find a Calendar
+     * @param {sessionsFindUniqueOrThrowArgs} args - Arguments to find a Sessions
      * @example
-     * // Get one Calendar
-     * const calendar = await prisma.calendar.findUniqueOrThrow({
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CalendarFindUniqueOrThrowArgs>(args: SelectSubset<T, CalendarFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends sessionsFindUniqueOrThrowArgs>(args: SelectSubset<T, sessionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Calendar that matches the filter.
+     * Find the first Sessions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarFindFirstArgs} args - Arguments to find a Calendar
+     * @param {sessionsFindFirstArgs} args - Arguments to find a Sessions
      * @example
-     * // Get one Calendar
-     * const calendar = await prisma.calendar.findFirst({
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CalendarFindFirstArgs>(args?: SelectSubset<T, CalendarFindFirstArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends sessionsFindFirstArgs>(args?: SelectSubset<T, sessionsFindFirstArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Calendar that matches the filter or
+     * Find the first Sessions that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarFindFirstOrThrowArgs} args - Arguments to find a Calendar
+     * @param {sessionsFindFirstOrThrowArgs} args - Arguments to find a Sessions
      * @example
-     * // Get one Calendar
-     * const calendar = await prisma.calendar.findFirstOrThrow({
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CalendarFindFirstOrThrowArgs>(args?: SelectSubset<T, CalendarFindFirstOrThrowArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends sessionsFindFirstOrThrowArgs>(args?: SelectSubset<T, sessionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Calendars that matches the filter.
+     * Find zero or more Sessions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {sessionsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Calendars
-     * const calendars = await prisma.calendar.findMany()
+     * // Get all Sessions
+     * const sessions = await prisma.sessions.findMany()
      * 
-     * // Get first 10 Calendars
-     * const calendars = await prisma.calendar.findMany({ take: 10 })
+     * // Get first 10 Sessions
+     * const sessions = await prisma.sessions.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const calendarWithIdOnly = await prisma.calendar.findMany({ select: { id: true } })
+     * const sessionsWithIdOnly = await prisma.sessions.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CalendarFindManyArgs>(args?: SelectSubset<T, CalendarFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends sessionsFindManyArgs>(args?: SelectSubset<T, sessionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Calendar.
-     * @param {CalendarCreateArgs} args - Arguments to create a Calendar.
+     * Create a Sessions.
+     * @param {sessionsCreateArgs} args - Arguments to create a Sessions.
      * @example
-     * // Create one Calendar
-     * const Calendar = await prisma.calendar.create({
+     * // Create one Sessions
+     * const Sessions = await prisma.sessions.create({
      *   data: {
-     *     // ... data to create a Calendar
+     *     // ... data to create a Sessions
      *   }
      * })
      * 
      */
-    create<T extends CalendarCreateArgs>(args: SelectSubset<T, CalendarCreateArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends sessionsCreateArgs>(args: SelectSubset<T, sessionsCreateArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Calendars.
-     * @param {CalendarCreateManyArgs} args - Arguments to create many Calendars.
+     * Create many Sessions.
+     * @param {sessionsCreateManyArgs} args - Arguments to create many Sessions.
      * @example
-     * // Create many Calendars
-     * const calendar = await prisma.calendar.createMany({
+     * // Create many Sessions
+     * const sessions = await prisma.sessions.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CalendarCreateManyArgs>(args?: SelectSubset<T, CalendarCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends sessionsCreateManyArgs>(args?: SelectSubset<T, sessionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Calendars and returns the data saved in the database.
-     * @param {CalendarCreateManyAndReturnArgs} args - Arguments to create many Calendars.
+     * Create many Sessions and returns the data saved in the database.
+     * @param {sessionsCreateManyAndReturnArgs} args - Arguments to create many Sessions.
      * @example
-     * // Create many Calendars
-     * const calendar = await prisma.calendar.createManyAndReturn({
+     * // Create many Sessions
+     * const sessions = await prisma.sessions.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Calendars and only return the `id`
-     * const calendarWithIdOnly = await prisma.calendar.createManyAndReturn({
+     * // Create many Sessions and only return the `id`
+     * const sessionsWithIdOnly = await prisma.sessions.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3869,28 +2540,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CalendarCreateManyAndReturnArgs>(args?: SelectSubset<T, CalendarCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends sessionsCreateManyAndReturnArgs>(args?: SelectSubset<T, sessionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Calendar.
-     * @param {CalendarDeleteArgs} args - Arguments to delete one Calendar.
+     * Delete a Sessions.
+     * @param {sessionsDeleteArgs} args - Arguments to delete one Sessions.
      * @example
-     * // Delete one Calendar
-     * const Calendar = await prisma.calendar.delete({
+     * // Delete one Sessions
+     * const Sessions = await prisma.sessions.delete({
      *   where: {
-     *     // ... filter to delete one Calendar
+     *     // ... filter to delete one Sessions
      *   }
      * })
      * 
      */
-    delete<T extends CalendarDeleteArgs>(args: SelectSubset<T, CalendarDeleteArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends sessionsDeleteArgs>(args: SelectSubset<T, sessionsDeleteArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Calendar.
-     * @param {CalendarUpdateArgs} args - Arguments to update one Calendar.
+     * Update one Sessions.
+     * @param {sessionsUpdateArgs} args - Arguments to update one Sessions.
      * @example
-     * // Update one Calendar
-     * const calendar = await prisma.calendar.update({
+     * // Update one Sessions
+     * const sessions = await prisma.sessions.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3900,30 +2571,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CalendarUpdateArgs>(args: SelectSubset<T, CalendarUpdateArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends sessionsUpdateArgs>(args: SelectSubset<T, sessionsUpdateArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Calendars.
-     * @param {CalendarDeleteManyArgs} args - Arguments to filter Calendars to delete.
+     * Delete zero or more Sessions.
+     * @param {sessionsDeleteManyArgs} args - Arguments to filter Sessions to delete.
      * @example
-     * // Delete a few Calendars
-     * const { count } = await prisma.calendar.deleteMany({
+     * // Delete a few Sessions
+     * const { count } = await prisma.sessions.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CalendarDeleteManyArgs>(args?: SelectSubset<T, CalendarDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends sessionsDeleteManyArgs>(args?: SelectSubset<T, sessionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Calendars.
+     * Update zero or more Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {sessionsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Calendars
-     * const calendar = await prisma.calendar.updateMany({
+     * // Update many Sessions
+     * const sessions = await prisma.sessions.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3933,14 +2604,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CalendarUpdateManyArgs>(args: SelectSubset<T, CalendarUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends sessionsUpdateManyArgs>(args: SelectSubset<T, sessionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Calendars and returns the data updated in the database.
-     * @param {CalendarUpdateManyAndReturnArgs} args - Arguments to update many Calendars.
+     * Update zero or more Sessions and returns the data updated in the database.
+     * @param {sessionsUpdateManyAndReturnArgs} args - Arguments to update many Sessions.
      * @example
-     * // Update many Calendars
-     * const calendar = await prisma.calendar.updateManyAndReturn({
+     * // Update many Sessions
+     * const sessions = await prisma.sessions.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3949,8 +2620,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Calendars and only return the `id`
-     * const calendarWithIdOnly = await prisma.calendar.updateManyAndReturn({
+     * // Update zero or more Sessions and only return the `id`
+     * const sessionsWithIdOnly = await prisma.sessions.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3963,56 +2634,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CalendarUpdateManyAndReturnArgs>(args: SelectSubset<T, CalendarUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends sessionsUpdateManyAndReturnArgs>(args: SelectSubset<T, sessionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Calendar.
-     * @param {CalendarUpsertArgs} args - Arguments to update or create a Calendar.
+     * Create or update one Sessions.
+     * @param {sessionsUpsertArgs} args - Arguments to update or create a Sessions.
      * @example
-     * // Update or create a Calendar
-     * const calendar = await prisma.calendar.upsert({
+     * // Update or create a Sessions
+     * const sessions = await prisma.sessions.upsert({
      *   create: {
-     *     // ... data to create a Calendar
+     *     // ... data to create a Sessions
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Calendar we want to update
+     *     // ... the filter for the Sessions we want to update
      *   }
      * })
      */
-    upsert<T extends CalendarUpsertArgs>(args: SelectSubset<T, CalendarUpsertArgs<ExtArgs>>): Prisma__CalendarClient<$Result.GetResult<Prisma.$CalendarPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends sessionsUpsertArgs>(args: SelectSubset<T, sessionsUpsertArgs<ExtArgs>>): Prisma__sessionsClient<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Calendars.
+     * Count the number of Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarCountArgs} args - Arguments to filter Calendars to count.
+     * @param {sessionsCountArgs} args - Arguments to filter Sessions to count.
      * @example
-     * // Count the number of Calendars
-     * const count = await prisma.calendar.count({
+     * // Count the number of Sessions
+     * const count = await prisma.sessions.count({
      *   where: {
-     *     // ... the filter for the Calendars we want to count
+     *     // ... the filter for the Sessions we want to count
      *   }
      * })
     **/
-    count<T extends CalendarCountArgs>(
-      args?: Subset<T, CalendarCountArgs>,
+    count<T extends sessionsCountArgs>(
+      args?: Subset<T, sessionsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CalendarCountAggregateOutputType>
+          : GetScalarType<T['select'], SessionsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Calendar.
+     * Allows you to perform aggregations operations on a Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SessionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4032,13 +2703,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CalendarAggregateArgs>(args: Subset<T, CalendarAggregateArgs>): Prisma.PrismaPromise<GetCalendarAggregateType<T>>
+    aggregate<T extends SessionsAggregateArgs>(args: Subset<T, SessionsAggregateArgs>): Prisma.PrismaPromise<GetSessionsAggregateType<T>>
 
     /**
-     * Group by Calendar.
+     * Group by Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CalendarGroupByArgs} args - Group by arguments.
+     * @param {sessionsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4053,14 +2724,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CalendarGroupByArgs,
+      T extends sessionsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CalendarGroupByArgs['orderBy'] }
-        : { orderBy?: CalendarGroupByArgs['orderBy'] },
+        ? { orderBy: sessionsGroupByArgs['orderBy'] }
+        : { orderBy?: sessionsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4109,22 +2780,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CalendarGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCalendarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, sessionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSessionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Calendar model
+   * Fields of the sessions model
    */
-  readonly fields: CalendarFieldRefs;
+  readonly fields: sessionsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Calendar.
+   * The delegate class that acts as a "Promise-like" for sessions.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CalendarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__sessionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4151,808 +2822,828 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Calendar model
+   * Fields of the sessions model
    */
-  interface CalendarFieldRefs {
-    readonly id: FieldRef<"Calendar", 'String'>
-    readonly title: FieldRef<"Calendar", 'String'>
-    readonly description: FieldRef<"Calendar", 'String'>
-    readonly date: FieldRef<"Calendar", 'DateTime'>
-    readonly endDate: FieldRef<"Calendar", 'DateTime'>
-    readonly isAllDay: FieldRef<"Calendar", 'Boolean'>
-    readonly userId: FieldRef<"Calendar", 'String'>
-    readonly createdAt: FieldRef<"Calendar", 'DateTime'>
-    readonly updatedAt: FieldRef<"Calendar", 'DateTime'>
+  interface sessionsFieldRefs {
+    readonly id: FieldRef<"sessions", 'String'>
+    readonly user_id: FieldRef<"sessions", 'String'>
+    readonly refresh_token: FieldRef<"sessions", 'String'>
+    readonly user_agent: FieldRef<"sessions", 'String'>
+    readonly ip_address: FieldRef<"sessions", 'String'>
+    readonly created_at: FieldRef<"sessions", 'DateTime'>
+    readonly updated_at: FieldRef<"sessions", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Calendar findUnique
+   * sessions findUnique
    */
-  export type CalendarFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter, which Calendar to fetch.
+     * Filter, which sessions to fetch.
      */
-    where: CalendarWhereUniqueInput
+    where: sessionsWhereUniqueInput
   }
 
   /**
-   * Calendar findUniqueOrThrow
+   * sessions findUniqueOrThrow
    */
-  export type CalendarFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter, which Calendar to fetch.
+     * Filter, which sessions to fetch.
      */
-    where: CalendarWhereUniqueInput
+    where: sessionsWhereUniqueInput
   }
 
   /**
-   * Calendar findFirst
+   * sessions findFirst
    */
-  export type CalendarFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter, which Calendar to fetch.
+     * Filter, which sessions to fetch.
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Calendars to fetch.
+     * Determine the order of sessions to fetch.
      */
-    orderBy?: CalendarOrderByWithRelationInput | CalendarOrderByWithRelationInput[]
+    orderBy?: sessionsOrderByWithRelationInput | sessionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Calendars.
+     * Sets the position for searching for sessions.
      */
-    cursor?: CalendarWhereUniqueInput
+    cursor?: sessionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Calendars from the position of the cursor.
+     * Take `±n` sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Calendars.
+     * Skip the first `n` sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Calendars.
+     * Filter by unique combinations of sessions.
      */
-    distinct?: CalendarScalarFieldEnum | CalendarScalarFieldEnum[]
+    distinct?: SessionsScalarFieldEnum | SessionsScalarFieldEnum[]
   }
 
   /**
-   * Calendar findFirstOrThrow
+   * sessions findFirstOrThrow
    */
-  export type CalendarFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter, which Calendar to fetch.
+     * Filter, which sessions to fetch.
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Calendars to fetch.
+     * Determine the order of sessions to fetch.
      */
-    orderBy?: CalendarOrderByWithRelationInput | CalendarOrderByWithRelationInput[]
+    orderBy?: sessionsOrderByWithRelationInput | sessionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Calendars.
+     * Sets the position for searching for sessions.
      */
-    cursor?: CalendarWhereUniqueInput
+    cursor?: sessionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Calendars from the position of the cursor.
+     * Take `±n` sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Calendars.
+     * Skip the first `n` sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Calendars.
+     * Filter by unique combinations of sessions.
      */
-    distinct?: CalendarScalarFieldEnum | CalendarScalarFieldEnum[]
+    distinct?: SessionsScalarFieldEnum | SessionsScalarFieldEnum[]
   }
 
   /**
-   * Calendar findMany
+   * sessions findMany
    */
-  export type CalendarFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter, which Calendars to fetch.
+     * Filter, which sessions to fetch.
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Calendars to fetch.
+     * Determine the order of sessions to fetch.
      */
-    orderBy?: CalendarOrderByWithRelationInput | CalendarOrderByWithRelationInput[]
+    orderBy?: sessionsOrderByWithRelationInput | sessionsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Calendars.
+     * Sets the position for listing sessions.
      */
-    cursor?: CalendarWhereUniqueInput
+    cursor?: sessionsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Calendars from the position of the cursor.
+     * Take `±n` sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Calendars.
+     * Skip the first `n` sessions.
      */
     skip?: number
-    distinct?: CalendarScalarFieldEnum | CalendarScalarFieldEnum[]
+    distinct?: SessionsScalarFieldEnum | SessionsScalarFieldEnum[]
   }
 
   /**
-   * Calendar create
+   * sessions create
    */
-  export type CalendarCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * The data needed to create a Calendar.
+     * The data needed to create a sessions.
      */
-    data: XOR<CalendarCreateInput, CalendarUncheckedCreateInput>
+    data: XOR<sessionsCreateInput, sessionsUncheckedCreateInput>
   }
 
   /**
-   * Calendar createMany
+   * sessions createMany
    */
-  export type CalendarCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Calendars.
+     * The data used to create many sessions.
      */
-    data: CalendarCreateManyInput | CalendarCreateManyInput[]
+    data: sessionsCreateManyInput | sessionsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Calendar createManyAndReturn
+   * sessions createManyAndReturn
    */
-  export type CalendarCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelectCreateManyAndReturn<ExtArgs> | null
+    select?: sessionsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
-     * The data used to create many Calendars.
+     * The data used to create many sessions.
      */
-    data: CalendarCreateManyInput | CalendarCreateManyInput[]
+    data: sessionsCreateManyInput | sessionsCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: sessionsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Calendar update
+   * sessions update
    */
-  export type CalendarUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * The data needed to update a Calendar.
+     * The data needed to update a sessions.
      */
-    data: XOR<CalendarUpdateInput, CalendarUncheckedUpdateInput>
+    data: XOR<sessionsUpdateInput, sessionsUncheckedUpdateInput>
     /**
-     * Choose, which Calendar to update.
+     * Choose, which sessions to update.
      */
-    where: CalendarWhereUniqueInput
+    where: sessionsWhereUniqueInput
   }
 
   /**
-   * Calendar updateMany
+   * sessions updateMany
    */
-  export type CalendarUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Calendars.
+     * The data used to update sessions.
      */
-    data: XOR<CalendarUpdateManyMutationInput, CalendarUncheckedUpdateManyInput>
+    data: XOR<sessionsUpdateManyMutationInput, sessionsUncheckedUpdateManyInput>
     /**
-     * Filter which Calendars to update
+     * Filter which sessions to update
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
-     * Limit how many Calendars to update.
+     * Limit how many sessions to update.
      */
     limit?: number
   }
 
   /**
-   * Calendar updateManyAndReturn
+   * sessions updateManyAndReturn
    */
-  export type CalendarUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: sessionsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
-     * The data used to update Calendars.
+     * The data used to update sessions.
      */
-    data: XOR<CalendarUpdateManyMutationInput, CalendarUncheckedUpdateManyInput>
+    data: XOR<sessionsUpdateManyMutationInput, sessionsUncheckedUpdateManyInput>
     /**
-     * Filter which Calendars to update
+     * Filter which sessions to update
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
-     * Limit how many Calendars to update.
+     * Limit how many sessions to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: sessionsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Calendar upsert
+   * sessions upsert
    */
-  export type CalendarUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * The filter to search for the Calendar to update in case it exists.
+     * The filter to search for the sessions to update in case it exists.
      */
-    where: CalendarWhereUniqueInput
+    where: sessionsWhereUniqueInput
     /**
-     * In case the Calendar found by the `where` argument doesn't exist, create a new Calendar with this data.
+     * In case the sessions found by the `where` argument doesn't exist, create a new sessions with this data.
      */
-    create: XOR<CalendarCreateInput, CalendarUncheckedCreateInput>
+    create: XOR<sessionsCreateInput, sessionsUncheckedCreateInput>
     /**
-     * In case the Calendar was found with the provided `where` argument, update it with this data.
+     * In case the sessions was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CalendarUpdateInput, CalendarUncheckedUpdateInput>
+    update: XOR<sessionsUpdateInput, sessionsUncheckedUpdateInput>
   }
 
   /**
-   * Calendar delete
+   * sessions delete
    */
-  export type CalendarDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
     /**
-     * Filter which Calendar to delete.
+     * Filter which sessions to delete.
      */
-    where: CalendarWhereUniqueInput
+    where: sessionsWhereUniqueInput
   }
 
   /**
-   * Calendar deleteMany
+   * sessions deleteMany
    */
-  export type CalendarDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Calendars to delete
+     * Filter which sessions to delete
      */
-    where?: CalendarWhereInput
+    where?: sessionsWhereInput
     /**
-     * Limit how many Calendars to delete.
+     * Limit how many sessions to delete.
      */
     limit?: number
   }
 
   /**
-   * Calendar without action
+   * sessions without action
    */
-  export type CalendarDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type sessionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Calendar
+     * Select specific fields to fetch from the sessions
      */
-    select?: CalendarSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Calendar
+     * Omit specific fields from the sessions
      */
-    omit?: CalendarOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CalendarInclude<ExtArgs> | null
+    include?: sessionsInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Note
+   * Model users
    */
 
-  export type AggregateNote = {
-    _count: NoteCountAggregateOutputType | null
-    _min: NoteMinAggregateOutputType | null
-    _max: NoteMaxAggregateOutputType | null
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
   }
 
-  export type NoteMinAggregateOutputType = {
+  export type UsersMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    content: string | null
-    laneId: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    name: string | null
+    email: string | null
+    password: string | null
+    phone: string | null
+    lane_id: string | null
+    created_at: Date | null
+    provider: string | null
+    provider_id: string | null
   }
 
-  export type NoteMaxAggregateOutputType = {
+  export type UsersMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    content: string | null
-    laneId: string | null
-    userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    name: string | null
+    email: string | null
+    password: string | null
+    phone: string | null
+    lane_id: string | null
+    created_at: Date | null
+    provider: string | null
+    provider_id: string | null
   }
 
-  export type NoteCountAggregateOutputType = {
+  export type UsersCountAggregateOutputType = {
     id: number
-    title: number
-    content: number
-    laneId: number
-    userId: number
-    createdAt: number
-    updatedAt: number
+    name: number
+    email: number
+    password: number
+    phone: number
+    lane_id: number
+    created_at: number
+    provider: number
+    provider_id: number
     _all: number
   }
 
 
-  export type NoteMinAggregateInputType = {
+  export type UsersMinAggregateInputType = {
     id?: true
-    title?: true
-    content?: true
-    laneId?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    name?: true
+    email?: true
+    password?: true
+    phone?: true
+    lane_id?: true
+    created_at?: true
+    provider?: true
+    provider_id?: true
   }
 
-  export type NoteMaxAggregateInputType = {
+  export type UsersMaxAggregateInputType = {
     id?: true
-    title?: true
-    content?: true
-    laneId?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    name?: true
+    email?: true
+    password?: true
+    phone?: true
+    lane_id?: true
+    created_at?: true
+    provider?: true
+    provider_id?: true
   }
 
-  export type NoteCountAggregateInputType = {
+  export type UsersCountAggregateInputType = {
     id?: true
-    title?: true
-    content?: true
-    laneId?: true
-    userId?: true
-    createdAt?: true
-    updatedAt?: true
+    name?: true
+    email?: true
+    password?: true
+    phone?: true
+    lane_id?: true
+    created_at?: true
+    provider?: true
+    provider_id?: true
     _all?: true
   }
 
-  export type NoteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Note to aggregate.
+     * Filter which users to aggregate.
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notes to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: NoteWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notes from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notes.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Notes
+     * Count returned users
     **/
-    _count?: true | NoteCountAggregateInputType
+    _count?: true | UsersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: NoteMinAggregateInputType
+    _min?: UsersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: NoteMaxAggregateInputType
+    _max?: UsersMaxAggregateInputType
   }
 
-  export type GetNoteAggregateType<T extends NoteAggregateArgs> = {
-        [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateNote[P]>
-      : GetScalarType<T[P], AggregateNote[P]>
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
   }
 
 
 
 
-  export type NoteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NoteWhereInput
-    orderBy?: NoteOrderByWithAggregationInput | NoteOrderByWithAggregationInput[]
-    by: NoteScalarFieldEnum[] | NoteScalarFieldEnum
-    having?: NoteScalarWhereWithAggregatesInput
+  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: usersScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: NoteCountAggregateInputType | true
-    _min?: NoteMinAggregateInputType
-    _max?: NoteMaxAggregateInputType
+    _count?: UsersCountAggregateInputType | true
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
   }
 
-  export type NoteGroupByOutputType = {
+  export type UsersGroupByOutputType = {
     id: string
-    title: string
-    content: string
-    laneId: string | null
-    userId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: NoteCountAggregateOutputType | null
-    _min: NoteMinAggregateOutputType | null
-    _max: NoteMaxAggregateOutputType | null
+    name: string
+    email: string
+    password: string | null
+    phone: string
+    lane_id: string | null
+    created_at: Date | null
+    provider: string | null
+    provider_id: string | null
+    _count: UsersCountAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
   }
 
-  type GetNoteGroupByPayload<T extends NoteGroupByArgs> = Prisma.PrismaPromise<
+  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<NoteGroupByOutputType, T['by']> &
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], NoteGroupByOutputType[P]>
-            : GetScalarType<T[P], NoteGroupByOutputType[P]>
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type NoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    content?: boolean
-    laneId?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
-  }, ExtArgs["result"]["note"]>
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    phone?: boolean
+    lane_id?: boolean
+    created_at?: boolean
+    provider?: boolean
+    provider_id?: boolean
+    sessions?: boolean | users$sessionsArgs<ExtArgs>
+    lanes?: boolean | users$lanesArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["users"]>
 
-  export type NoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    content?: boolean
-    laneId?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
-  }, ExtArgs["result"]["note"]>
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    phone?: boolean
+    lane_id?: boolean
+    created_at?: boolean
+    provider?: boolean
+    provider_id?: boolean
+    lanes?: boolean | users$lanesArgs<ExtArgs>
+  }, ExtArgs["result"]["users"]>
 
-  export type NoteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    content?: boolean
-    laneId?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
-  }, ExtArgs["result"]["note"]>
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    phone?: boolean
+    lane_id?: boolean
+    created_at?: boolean
+    provider?: boolean
+    provider_id?: boolean
+    lanes?: boolean | users$lanesArgs<ExtArgs>
+  }, ExtArgs["result"]["users"]>
 
-  export type NoteSelectScalar = {
+  export type usersSelectScalar = {
     id?: boolean
-    title?: boolean
-    content?: boolean
-    laneId?: boolean
-    userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    name?: boolean
+    email?: boolean
+    password?: boolean
+    phone?: boolean
+    lane_id?: boolean
+    created_at?: boolean
+    provider?: boolean
+    provider_id?: boolean
   }
 
-  export type NoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "laneId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["note"]>
-  export type NoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "phone" | "lane_id" | "created_at" | "provider" | "provider_id", ExtArgs["result"]["users"]>
+  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sessions?: boolean | users$sessionsArgs<ExtArgs>
+    lanes?: boolean | users$lanesArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type NoteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
+  export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lanes?: boolean | users$lanesArgs<ExtArgs>
   }
-  export type NoteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    lane?: boolean | Note$laneArgs<ExtArgs>
+  export type usersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lanes?: boolean | users$lanesArgs<ExtArgs>
   }
 
-  export type $NotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Note"
+  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "users"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      lane: Prisma.$LanePayload<ExtArgs> | null
+      sessions: Prisma.$sessionsPayload<ExtArgs>[]
+      lanes: Prisma.$lanesPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      content: string
-      laneId: string | null
-      userId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["note"]>
+      name: string
+      email: string
+      password: string | null
+      phone: string
+      lane_id: string | null
+      created_at: Date | null
+      provider: string | null
+      provider_id: string | null
+    }, ExtArgs["result"]["users"]>
     composites: {}
   }
 
-  type NoteGetPayload<S extends boolean | null | undefined | NoteDefaultArgs> = $Result.GetResult<Prisma.$NotePayload, S>
+  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
 
-  type NoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<NoteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: NoteCountAggregateInputType | true
+  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UsersCountAggregateInputType | true
     }
 
-  export interface NoteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Note'], meta: { name: 'Note' } }
+  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
     /**
-     * Find zero or one Note that matches the filter.
-     * @param {NoteFindUniqueArgs} args - Arguments to find a Note
+     * Find zero or one Users that matches the filter.
+     * @param {usersFindUniqueArgs} args - Arguments to find a Users
      * @example
-     * // Get one Note
-     * const note = await prisma.note.findUnique({
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends NoteFindUniqueArgs>(args: SelectSubset<T, NoteFindUniqueArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Note that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Users that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {NoteFindUniqueOrThrowArgs} args - Arguments to find a Note
+     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
      * @example
-     * // Get one Note
-     * const note = await prisma.note.findUniqueOrThrow({
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends NoteFindUniqueOrThrowArgs>(args: SelectSubset<T, NoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Note that matches the filter.
+     * Find the first Users that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteFindFirstArgs} args - Arguments to find a Note
+     * @param {usersFindFirstArgs} args - Arguments to find a Users
      * @example
-     * // Get one Note
-     * const note = await prisma.note.findFirst({
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends NoteFindFirstArgs>(args?: SelectSubset<T, NoteFindFirstArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Note that matches the filter or
+     * Find the first Users that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteFindFirstOrThrowArgs} args - Arguments to find a Note
+     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
      * @example
-     * // Get one Note
-     * const note = await prisma.note.findFirstOrThrow({
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends NoteFindFirstOrThrowArgs>(args?: SelectSubset<T, NoteFindFirstOrThrowArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Notes that matches the filter.
+     * Find zero or more Users that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {usersFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Notes
-     * const notes = await prisma.note.findMany()
+     * // Get all Users
+     * const users = await prisma.users.findMany()
      * 
-     * // Get first 10 Notes
-     * const notes = await prisma.note.findMany({ take: 10 })
+     * // Get first 10 Users
+     * const users = await prisma.users.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const noteWithIdOnly = await prisma.note.findMany({ select: { id: true } })
+     * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends NoteFindManyArgs>(args?: SelectSubset<T, NoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Note.
-     * @param {NoteCreateArgs} args - Arguments to create a Note.
+     * Create a Users.
+     * @param {usersCreateArgs} args - Arguments to create a Users.
      * @example
-     * // Create one Note
-     * const Note = await prisma.note.create({
+     * // Create one Users
+     * const Users = await prisma.users.create({
      *   data: {
-     *     // ... data to create a Note
+     *     // ... data to create a Users
      *   }
      * })
      * 
      */
-    create<T extends NoteCreateArgs>(args: SelectSubset<T, NoteCreateArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Notes.
-     * @param {NoteCreateManyArgs} args - Arguments to create many Notes.
+     * Create many Users.
+     * @param {usersCreateManyArgs} args - Arguments to create many Users.
      * @example
-     * // Create many Notes
-     * const note = await prisma.note.createMany({
+     * // Create many Users
+     * const users = await prisma.users.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends NoteCreateManyArgs>(args?: SelectSubset<T, NoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Notes and returns the data saved in the database.
-     * @param {NoteCreateManyAndReturnArgs} args - Arguments to create many Notes.
+     * Create many Users and returns the data saved in the database.
+     * @param {usersCreateManyAndReturnArgs} args - Arguments to create many Users.
      * @example
-     * // Create many Notes
-     * const note = await prisma.note.createManyAndReturn({
+     * // Create many Users
+     * const users = await prisma.users.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Notes and only return the `id`
-     * const noteWithIdOnly = await prisma.note.createManyAndReturn({
+     * // Create many Users and only return the `id`
+     * const usersWithIdOnly = await prisma.users.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4962,28 +3653,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends NoteCreateManyAndReturnArgs>(args?: SelectSubset<T, NoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Note.
-     * @param {NoteDeleteArgs} args - Arguments to delete one Note.
+     * Delete a Users.
+     * @param {usersDeleteArgs} args - Arguments to delete one Users.
      * @example
-     * // Delete one Note
-     * const Note = await prisma.note.delete({
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
      *   where: {
-     *     // ... filter to delete one Note
+     *     // ... filter to delete one Users
      *   }
      * })
      * 
      */
-    delete<T extends NoteDeleteArgs>(args: SelectSubset<T, NoteDeleteArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Note.
-     * @param {NoteUpdateArgs} args - Arguments to update one Note.
+     * Update one Users.
+     * @param {usersUpdateArgs} args - Arguments to update one Users.
      * @example
-     * // Update one Note
-     * const note = await prisma.note.update({
+     * // Update one Users
+     * const users = await prisma.users.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4993,30 +3684,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends NoteUpdateArgs>(args: SelectSubset<T, NoteUpdateArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Notes.
-     * @param {NoteDeleteManyArgs} args - Arguments to filter Notes to delete.
+     * Delete zero or more Users.
+     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
      * @example
-     * // Delete a few Notes
-     * const { count } = await prisma.note.deleteMany({
+     * // Delete a few Users
+     * const { count } = await prisma.users.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends NoteDeleteManyArgs>(args?: SelectSubset<T, NoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Notes.
+     * Update zero or more Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Notes
-     * const note = await prisma.note.updateMany({
+     * // Update many Users
+     * const users = await prisma.users.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5026,14 +3717,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends NoteUpdateManyArgs>(args: SelectSubset<T, NoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Notes and returns the data updated in the database.
-     * @param {NoteUpdateManyAndReturnArgs} args - Arguments to update many Notes.
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {usersUpdateManyAndReturnArgs} args - Arguments to update many Users.
      * @example
-     * // Update many Notes
-     * const note = await prisma.note.updateManyAndReturn({
+     * // Update many Users
+     * const users = await prisma.users.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5042,8 +3733,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Notes and only return the `id`
-     * const noteWithIdOnly = await prisma.note.updateManyAndReturn({
+     * // Update zero or more Users and only return the `id`
+     * const usersWithIdOnly = await prisma.users.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5056,56 +3747,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends NoteUpdateManyAndReturnArgs>(args: SelectSubset<T, NoteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Note.
-     * @param {NoteUpsertArgs} args - Arguments to update or create a Note.
+     * Create or update one Users.
+     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
      * @example
-     * // Update or create a Note
-     * const note = await prisma.note.upsert({
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
      *   create: {
-     *     // ... data to create a Note
+     *     // ... data to create a Users
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Note we want to update
+     *     // ... the filter for the Users we want to update
      *   }
      * })
      */
-    upsert<T extends NoteUpsertArgs>(args: SelectSubset<T, NoteUpsertArgs<ExtArgs>>): Prisma__NoteClient<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Notes.
+     * Count the number of Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteCountArgs} args - Arguments to filter Notes to count.
+     * @param {usersCountArgs} args - Arguments to filter Users to count.
      * @example
-     * // Count the number of Notes
-     * const count = await prisma.note.count({
+     * // Count the number of Users
+     * const count = await prisma.users.count({
      *   where: {
-     *     // ... the filter for the Notes we want to count
+     *     // ... the filter for the Users we want to count
      *   }
      * })
     **/
-    count<T extends NoteCountArgs>(
-      args?: Subset<T, NoteCountArgs>,
+    count<T extends usersCountArgs>(
+      args?: Subset<T, usersCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], NoteCountAggregateOutputType>
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Note.
+     * Allows you to perform aggregations operations on a Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5125,13 +3816,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends NoteAggregateArgs>(args: Subset<T, NoteAggregateArgs>): Prisma.PrismaPromise<GetNoteAggregateType<T>>
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
 
     /**
-     * Group by Note.
+     * Group by Users.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {NoteGroupByArgs} args - Group by arguments.
+     * @param {usersGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5146,14 +3837,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends NoteGroupByArgs,
+      T extends usersGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: NoteGroupByArgs['orderBy'] }
-        : { orderBy?: NoteGroupByArgs['orderBy'] },
+        ? { orderBy: usersGroupByArgs['orderBy'] }
+        : { orderBy?: usersGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5202,23 +3893,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, NoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Note model
+   * Fields of the users model
    */
-  readonly fields: NoteFieldRefs;
+  readonly fields: usersFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Note.
+   * The delegate class that acts as a "Promise-like" for users.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__NoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    lane<T extends Note$laneArgs<ExtArgs> = {}>(args?: Subset<T, Note$laneArgs<ExtArgs>>): Prisma__LaneClient<$Result.GetResult<Prisma.$LanePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    sessions<T extends users$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, users$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    lanes<T extends users$lanesArgs<ExtArgs> = {}>(args?: Subset<T, users$lanesArgs<ExtArgs>>): Prisma__lanesClient<$Result.GetResult<Prisma.$lanesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5245,446 +3936,472 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Note model
+   * Fields of the users model
    */
-  interface NoteFieldRefs {
-    readonly id: FieldRef<"Note", 'String'>
-    readonly title: FieldRef<"Note", 'String'>
-    readonly content: FieldRef<"Note", 'String'>
-    readonly laneId: FieldRef<"Note", 'String'>
-    readonly userId: FieldRef<"Note", 'String'>
-    readonly createdAt: FieldRef<"Note", 'DateTime'>
-    readonly updatedAt: FieldRef<"Note", 'DateTime'>
+  interface usersFieldRefs {
+    readonly id: FieldRef<"users", 'String'>
+    readonly name: FieldRef<"users", 'String'>
+    readonly email: FieldRef<"users", 'String'>
+    readonly password: FieldRef<"users", 'String'>
+    readonly phone: FieldRef<"users", 'String'>
+    readonly lane_id: FieldRef<"users", 'String'>
+    readonly created_at: FieldRef<"users", 'DateTime'>
+    readonly provider: FieldRef<"users", 'String'>
+    readonly provider_id: FieldRef<"users", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Note findUnique
+   * users findUnique
    */
-  export type NoteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter, which Note to fetch.
+     * Filter, which users to fetch.
      */
-    where: NoteWhereUniqueInput
+    where: usersWhereUniqueInput
   }
 
   /**
-   * Note findUniqueOrThrow
+   * users findUniqueOrThrow
    */
-  export type NoteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter, which Note to fetch.
+     * Filter, which users to fetch.
      */
-    where: NoteWhereUniqueInput
+    where: usersWhereUniqueInput
   }
 
   /**
-   * Note findFirst
+   * users findFirst
    */
-  export type NoteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter, which Note to fetch.
+     * Filter, which users to fetch.
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notes to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Notes.
+     * Sets the position for searching for users.
      */
-    cursor?: NoteWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notes from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notes.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Notes.
+     * Filter by unique combinations of users.
      */
-    distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
   /**
-   * Note findFirstOrThrow
+   * users findFirstOrThrow
    */
-  export type NoteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter, which Note to fetch.
+     * Filter, which users to fetch.
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notes to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Notes.
+     * Sets the position for searching for users.
      */
-    cursor?: NoteWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notes from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notes.
+     * Skip the first `n` users.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Notes.
+     * Filter by unique combinations of users.
      */
-    distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
   /**
-   * Note findMany
+   * users findMany
    */
-  export type NoteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter, which Notes to fetch.
+     * Filter, which users to fetch.
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Notes to fetch.
+     * Determine the order of users to fetch.
      */
-    orderBy?: NoteOrderByWithRelationInput | NoteOrderByWithRelationInput[]
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Notes.
+     * Sets the position for listing users.
      */
-    cursor?: NoteWhereUniqueInput
+    cursor?: usersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Notes from the position of the cursor.
+     * Take `±n` users from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Notes.
+     * Skip the first `n` users.
      */
     skip?: number
-    distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
   }
 
   /**
-   * Note create
+   * users create
    */
-  export type NoteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * The data needed to create a Note.
+     * The data needed to create a users.
      */
-    data: XOR<NoteCreateInput, NoteUncheckedCreateInput>
+    data: XOR<usersCreateInput, usersUncheckedCreateInput>
   }
 
   /**
-   * Note createMany
+   * users createMany
    */
-  export type NoteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Notes.
+     * The data used to create many users.
      */
-    data: NoteCreateManyInput | NoteCreateManyInput[]
+    data: usersCreateManyInput | usersCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Note createManyAndReturn
+   * users createManyAndReturn
    */
-  export type NoteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelectCreateManyAndReturn<ExtArgs> | null
+    select?: usersSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
-     * The data used to create many Notes.
+     * The data used to create many users.
      */
-    data: NoteCreateManyInput | NoteCreateManyInput[]
+    data: usersCreateManyInput | usersCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: usersIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Note update
+   * users update
    */
-  export type NoteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * The data needed to update a Note.
+     * The data needed to update a users.
      */
-    data: XOR<NoteUpdateInput, NoteUncheckedUpdateInput>
+    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
     /**
-     * Choose, which Note to update.
+     * Choose, which users to update.
      */
-    where: NoteWhereUniqueInput
+    where: usersWhereUniqueInput
   }
 
   /**
-   * Note updateMany
+   * users updateMany
    */
-  export type NoteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Notes.
+     * The data used to update users.
      */
-    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyInput>
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
     /**
-     * Filter which Notes to update
+     * Filter which users to update
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
-     * Limit how many Notes to update.
+     * Limit how many users to update.
      */
     limit?: number
   }
 
   /**
-   * Note updateManyAndReturn
+   * users updateManyAndReturn
    */
-  export type NoteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: usersSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
-     * The data used to update Notes.
+     * The data used to update users.
      */
-    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyInput>
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
     /**
-     * Filter which Notes to update
+     * Filter which users to update
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
-     * Limit how many Notes to update.
+     * Limit how many users to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: usersIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Note upsert
+   * users upsert
    */
-  export type NoteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * The filter to search for the Note to update in case it exists.
+     * The filter to search for the users to update in case it exists.
      */
-    where: NoteWhereUniqueInput
+    where: usersWhereUniqueInput
     /**
-     * In case the Note found by the `where` argument doesn't exist, create a new Note with this data.
+     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
      */
-    create: XOR<NoteCreateInput, NoteUncheckedCreateInput>
+    create: XOR<usersCreateInput, usersUncheckedCreateInput>
     /**
-     * In case the Note was found with the provided `where` argument, update it with this data.
+     * In case the users was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<NoteUpdateInput, NoteUncheckedUpdateInput>
+    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
   }
 
   /**
-   * Note delete
+   * users delete
    */
-  export type NoteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the users
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: usersSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the users
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: usersOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
     /**
-     * Filter which Note to delete.
+     * Filter which users to delete.
      */
-    where: NoteWhereUniqueInput
+    where: usersWhereUniqueInput
   }
 
   /**
-   * Note deleteMany
+   * users deleteMany
    */
-  export type NoteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Notes to delete
+     * Filter which users to delete
      */
-    where?: NoteWhereInput
+    where?: usersWhereInput
     /**
-     * Limit how many Notes to delete.
+     * Limit how many users to delete.
      */
     limit?: number
   }
 
   /**
-   * Note.lane
+   * users.sessions
    */
-  export type Note$laneArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Lane
+     * Select specific fields to fetch from the sessions
      */
-    select?: LaneSelect<ExtArgs> | null
+    select?: sessionsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Lane
+     * Omit specific fields from the sessions
      */
-    omit?: LaneOmit<ExtArgs> | null
+    omit?: sessionsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LaneInclude<ExtArgs> | null
-    where?: LaneWhereInput
+    include?: sessionsInclude<ExtArgs> | null
+    where?: sessionsWhereInput
+    orderBy?: sessionsOrderByWithRelationInput | sessionsOrderByWithRelationInput[]
+    cursor?: sessionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SessionsScalarFieldEnum | SessionsScalarFieldEnum[]
   }
 
   /**
-   * Note without action
+   * users.lanes
    */
-  export type NoteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type users$lanesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Note
+     * Select specific fields to fetch from the lanes
      */
-    select?: NoteSelect<ExtArgs> | null
+    select?: lanesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Note
+     * Omit specific fields from the lanes
      */
-    omit?: NoteOmit<ExtArgs> | null
+    omit?: lanesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: NoteInclude<ExtArgs> | null
+    include?: lanesInclude<ExtArgs> | null
+    where?: lanesWhereInput
+  }
+
+  /**
+   * users without action
+   */
+  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
   }
 
 
@@ -5702,57 +4419,42 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UserScalarFieldEnum: {
+  export const LanesScalarFieldEnum: {
     id: 'id',
+    name: 'name',
+    description: 'description',
+    created_at: 'created_at'
+  };
+
+  export type LanesScalarFieldEnum = (typeof LanesScalarFieldEnum)[keyof typeof LanesScalarFieldEnum]
+
+
+  export const SessionsScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    refresh_token: 'refresh_token',
+    user_agent: 'user_agent',
+    ip_address: 'ip_address',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type SessionsScalarFieldEnum = (typeof SessionsScalarFieldEnum)[keyof typeof SessionsScalarFieldEnum]
+
+
+  export const UsersScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
     email: 'email',
     password: 'password',
-    name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    phone: 'phone',
+    lane_id: 'lane_id',
+    created_at: 'created_at',
+    provider: 'provider',
+    provider_id: 'provider_id'
   };
 
-  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-  export const LaneScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    color: 'color',
-    userId: 'userId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type LaneScalarFieldEnum = (typeof LaneScalarFieldEnum)[keyof typeof LaneScalarFieldEnum]
-
-
-  export const CalendarScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    date: 'date',
-    endDate: 'endDate',
-    isAllDay: 'isAllDay',
-    userId: 'userId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type CalendarScalarFieldEnum = (typeof CalendarScalarFieldEnum)[keyof typeof CalendarScalarFieldEnum]
-
-
-  export const NoteScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    content: 'content',
-    laneId: 'laneId',
-    userId: 'userId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof NoteScalarFieldEnum]
+  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5813,13 +4515,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5836,580 +4531,418 @@ export namespace Prisma {
    */
 
 
-  export type UserWhereInput = {
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    id?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
-    lanes?: LaneListRelationFilter
-    calendars?: CalendarListRelationFilter
-    notes?: NoteListRelationFilter
+  export type lanesWhereInput = {
+    AND?: lanesWhereInput | lanesWhereInput[]
+    OR?: lanesWhereInput[]
+    NOT?: lanesWhereInput | lanesWhereInput[]
+    id?: UuidFilter<"lanes"> | string
+    name?: StringFilter<"lanes"> | string
+    description?: StringNullableFilter<"lanes"> | string | null
+    created_at?: DateTimeNullableFilter<"lanes"> | Date | string | null
+    users?: UsersListRelationFilter
   }
 
-  export type UserOrderByWithRelationInput = {
+  export type lanesOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    lanes?: LaneOrderByRelationAggregateInput
-    calendars?: CalendarOrderByRelationAggregateInput
-    notes?: NoteOrderByRelationAggregateInput
+    description?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    users?: usersOrderByRelationAggregateInput
   }
 
-  export type UserWhereUniqueInput = Prisma.AtLeast<{
+  export type lanesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: lanesWhereInput | lanesWhereInput[]
+    OR?: lanesWhereInput[]
+    NOT?: lanesWhereInput | lanesWhereInput[]
+    name?: StringFilter<"lanes"> | string
+    description?: StringNullableFilter<"lanes"> | string | null
+    created_at?: DateTimeNullableFilter<"lanes"> | Date | string | null
+    users?: UsersListRelationFilter
+  }, "id">
+
+  export type lanesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _count?: lanesCountOrderByAggregateInput
+    _max?: lanesMaxOrderByAggregateInput
+    _min?: lanesMinOrderByAggregateInput
+  }
+
+  export type lanesScalarWhereWithAggregatesInput = {
+    AND?: lanesScalarWhereWithAggregatesInput | lanesScalarWhereWithAggregatesInput[]
+    OR?: lanesScalarWhereWithAggregatesInput[]
+    NOT?: lanesScalarWhereWithAggregatesInput | lanesScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"lanes"> | string
+    name?: StringWithAggregatesFilter<"lanes"> | string
+    description?: StringNullableWithAggregatesFilter<"lanes"> | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"lanes"> | Date | string | null
+  }
+
+  export type sessionsWhereInput = {
+    AND?: sessionsWhereInput | sessionsWhereInput[]
+    OR?: sessionsWhereInput[]
+    NOT?: sessionsWhereInput | sessionsWhereInput[]
+    id?: UuidFilter<"sessions"> | string
+    user_id?: UuidFilter<"sessions"> | string
+    refresh_token?: StringFilter<"sessions"> | string
+    user_agent?: StringNullableFilter<"sessions"> | string | null
+    ip_address?: StringNullableFilter<"sessions"> | string | null
+    created_at?: DateTimeFilter<"sessions"> | Date | string
+    updated_at?: DateTimeFilter<"sessions"> | Date | string
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }
+
+  export type sessionsOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    refresh_token?: SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    users?: usersOrderByWithRelationInput
+  }
+
+  export type sessionsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: sessionsWhereInput | sessionsWhereInput[]
+    OR?: sessionsWhereInput[]
+    NOT?: sessionsWhereInput | sessionsWhereInput[]
+    user_id?: UuidFilter<"sessions"> | string
+    refresh_token?: StringFilter<"sessions"> | string
+    user_agent?: StringNullableFilter<"sessions"> | string | null
+    ip_address?: StringNullableFilter<"sessions"> | string | null
+    created_at?: DateTimeFilter<"sessions"> | Date | string
+    updated_at?: DateTimeFilter<"sessions"> | Date | string
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }, "id">
+
+  export type sessionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    refresh_token?: SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: sessionsCountOrderByAggregateInput
+    _max?: sessionsMaxOrderByAggregateInput
+    _min?: sessionsMinOrderByAggregateInput
+  }
+
+  export type sessionsScalarWhereWithAggregatesInput = {
+    AND?: sessionsScalarWhereWithAggregatesInput | sessionsScalarWhereWithAggregatesInput[]
+    OR?: sessionsScalarWhereWithAggregatesInput[]
+    NOT?: sessionsScalarWhereWithAggregatesInput | sessionsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"sessions"> | string
+    user_id?: UuidWithAggregatesFilter<"sessions"> | string
+    refresh_token?: StringWithAggregatesFilter<"sessions"> | string
+    user_agent?: StringNullableWithAggregatesFilter<"sessions"> | string | null
+    ip_address?: StringNullableWithAggregatesFilter<"sessions"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"sessions"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"sessions"> | Date | string
+  }
+
+  export type usersWhereInput = {
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    id?: UuidFilter<"users"> | string
+    name?: StringFilter<"users"> | string
+    email?: StringFilter<"users"> | string
+    password?: StringNullableFilter<"users"> | string | null
+    phone?: StringFilter<"users"> | string
+    lane_id?: UuidNullableFilter<"users"> | string | null
+    created_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    provider?: StringNullableFilter<"users"> | string | null
+    provider_id?: StringNullableFilter<"users"> | string | null
+    sessions?: SessionsListRelationFilter
+    lanes?: XOR<LanesNullableScalarRelationFilter, lanesWhereInput> | null
+  }
+
+  export type usersOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    lane_id?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    provider?: SortOrderInput | SortOrder
+    provider_id?: SortOrderInput | SortOrder
+    sessions?: sessionsOrderByRelationAggregateInput
+    lanes?: lanesOrderByWithRelationInput
+  }
+
+  export type usersWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    password?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
-    lanes?: LaneListRelationFilter
-    calendars?: CalendarListRelationFilter
-    notes?: NoteListRelationFilter
+    AND?: usersWhereInput | usersWhereInput[]
+    OR?: usersWhereInput[]
+    NOT?: usersWhereInput | usersWhereInput[]
+    name?: StringFilter<"users"> | string
+    password?: StringNullableFilter<"users"> | string | null
+    phone?: StringFilter<"users"> | string
+    lane_id?: UuidNullableFilter<"users"> | string | null
+    created_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    provider?: StringNullableFilter<"users"> | string | null
+    provider_id?: StringNullableFilter<"users"> | string | null
+    sessions?: SessionsListRelationFilter
+    lanes?: XOR<LanesNullableScalarRelationFilter, lanesWhereInput> | null
   }, "id" | "email">
 
-  export type UserOrderByWithAggregationInput = {
+  export type usersOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: UserCountOrderByAggregateInput
-    _max?: UserMaxOrderByAggregateInput
-    _min?: UserMinOrderByAggregateInput
+    email?: SortOrder
+    password?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    lane_id?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    provider?: SortOrderInput | SortOrder
+    provider_id?: SortOrderInput | SortOrder
+    _count?: usersCountOrderByAggregateInput
+    _max?: usersMaxOrderByAggregateInput
+    _min?: usersMinOrderByAggregateInput
   }
 
-  export type UserScalarWhereWithAggregatesInput = {
-    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    OR?: UserScalarWhereWithAggregatesInput[]
-    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"User"> | string
-    email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
-    name?: StringWithAggregatesFilter<"User"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  export type usersScalarWhereWithAggregatesInput = {
+    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    OR?: usersScalarWhereWithAggregatesInput[]
+    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"users"> | string
+    name?: StringWithAggregatesFilter<"users"> | string
+    email?: StringWithAggregatesFilter<"users"> | string
+    password?: StringNullableWithAggregatesFilter<"users"> | string | null
+    phone?: StringWithAggregatesFilter<"users"> | string
+    lane_id?: UuidNullableWithAggregatesFilter<"users"> | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    provider?: StringNullableWithAggregatesFilter<"users"> | string | null
+    provider_id?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
-  export type LaneWhereInput = {
-    AND?: LaneWhereInput | LaneWhereInput[]
-    OR?: LaneWhereInput[]
-    NOT?: LaneWhereInput | LaneWhereInput[]
-    id?: StringFilter<"Lane"> | string
-    title?: StringFilter<"Lane"> | string
-    description?: StringNullableFilter<"Lane"> | string | null
-    color?: StringNullableFilter<"Lane"> | string | null
-    userId?: StringFilter<"Lane"> | string
-    createdAt?: DateTimeFilter<"Lane"> | Date | string
-    updatedAt?: DateTimeFilter<"Lane"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    notes?: NoteListRelationFilter
-  }
-
-  export type LaneOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrderInput | SortOrder
-    color?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-    notes?: NoteOrderByRelationAggregateInput
-  }
-
-  export type LaneWhereUniqueInput = Prisma.AtLeast<{
+  export type lanesCreateInput = {
     id?: string
-    AND?: LaneWhereInput | LaneWhereInput[]
-    OR?: LaneWhereInput[]
-    NOT?: LaneWhereInput | LaneWhereInput[]
-    title?: StringFilter<"Lane"> | string
-    description?: StringNullableFilter<"Lane"> | string | null
-    color?: StringNullableFilter<"Lane"> | string | null
-    userId?: StringFilter<"Lane"> | string
-    createdAt?: DateTimeFilter<"Lane"> | Date | string
-    updatedAt?: DateTimeFilter<"Lane"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    notes?: NoteListRelationFilter
-  }, "id">
-
-  export type LaneOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrderInput | SortOrder
-    color?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: LaneCountOrderByAggregateInput
-    _max?: LaneMaxOrderByAggregateInput
-    _min?: LaneMinOrderByAggregateInput
-  }
-
-  export type LaneScalarWhereWithAggregatesInput = {
-    AND?: LaneScalarWhereWithAggregatesInput | LaneScalarWhereWithAggregatesInput[]
-    OR?: LaneScalarWhereWithAggregatesInput[]
-    NOT?: LaneScalarWhereWithAggregatesInput | LaneScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Lane"> | string
-    title?: StringWithAggregatesFilter<"Lane"> | string
-    description?: StringNullableWithAggregatesFilter<"Lane"> | string | null
-    color?: StringNullableWithAggregatesFilter<"Lane"> | string | null
-    userId?: StringWithAggregatesFilter<"Lane"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Lane"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Lane"> | Date | string
-  }
-
-  export type CalendarWhereInput = {
-    AND?: CalendarWhereInput | CalendarWhereInput[]
-    OR?: CalendarWhereInput[]
-    NOT?: CalendarWhereInput | CalendarWhereInput[]
-    id?: StringFilter<"Calendar"> | string
-    title?: StringFilter<"Calendar"> | string
-    description?: StringNullableFilter<"Calendar"> | string | null
-    date?: DateTimeFilter<"Calendar"> | Date | string
-    endDate?: DateTimeNullableFilter<"Calendar"> | Date | string | null
-    isAllDay?: BoolFilter<"Calendar"> | boolean
-    userId?: StringFilter<"Calendar"> | string
-    createdAt?: DateTimeFilter<"Calendar"> | Date | string
-    updatedAt?: DateTimeFilter<"Calendar"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type CalendarOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrderInput | SortOrder
-    date?: SortOrder
-    endDate?: SortOrderInput | SortOrder
-    isAllDay?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type CalendarWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CalendarWhereInput | CalendarWhereInput[]
-    OR?: CalendarWhereInput[]
-    NOT?: CalendarWhereInput | CalendarWhereInput[]
-    title?: StringFilter<"Calendar"> | string
-    description?: StringNullableFilter<"Calendar"> | string | null
-    date?: DateTimeFilter<"Calendar"> | Date | string
-    endDate?: DateTimeNullableFilter<"Calendar"> | Date | string | null
-    isAllDay?: BoolFilter<"Calendar"> | boolean
-    userId?: StringFilter<"Calendar"> | string
-    createdAt?: DateTimeFilter<"Calendar"> | Date | string
-    updatedAt?: DateTimeFilter<"Calendar"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type CalendarOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrderInput | SortOrder
-    date?: SortOrder
-    endDate?: SortOrderInput | SortOrder
-    isAllDay?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: CalendarCountOrderByAggregateInput
-    _max?: CalendarMaxOrderByAggregateInput
-    _min?: CalendarMinOrderByAggregateInput
-  }
-
-  export type CalendarScalarWhereWithAggregatesInput = {
-    AND?: CalendarScalarWhereWithAggregatesInput | CalendarScalarWhereWithAggregatesInput[]
-    OR?: CalendarScalarWhereWithAggregatesInput[]
-    NOT?: CalendarScalarWhereWithAggregatesInput | CalendarScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Calendar"> | string
-    title?: StringWithAggregatesFilter<"Calendar"> | string
-    description?: StringNullableWithAggregatesFilter<"Calendar"> | string | null
-    date?: DateTimeWithAggregatesFilter<"Calendar"> | Date | string
-    endDate?: DateTimeNullableWithAggregatesFilter<"Calendar"> | Date | string | null
-    isAllDay?: BoolWithAggregatesFilter<"Calendar"> | boolean
-    userId?: StringWithAggregatesFilter<"Calendar"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Calendar"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Calendar"> | Date | string
-  }
-
-  export type NoteWhereInput = {
-    AND?: NoteWhereInput | NoteWhereInput[]
-    OR?: NoteWhereInput[]
-    NOT?: NoteWhereInput | NoteWhereInput[]
-    id?: StringFilter<"Note"> | string
-    title?: StringFilter<"Note"> | string
-    content?: StringFilter<"Note"> | string
-    laneId?: StringNullableFilter<"Note"> | string | null
-    userId?: StringFilter<"Note"> | string
-    createdAt?: DateTimeFilter<"Note"> | Date | string
-    updatedAt?: DateTimeFilter<"Note"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    lane?: XOR<LaneNullableScalarRelationFilter, LaneWhereInput> | null
-  }
-
-  export type NoteOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    laneId?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-    lane?: LaneOrderByWithRelationInput
-  }
-
-  export type NoteWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: NoteWhereInput | NoteWhereInput[]
-    OR?: NoteWhereInput[]
-    NOT?: NoteWhereInput | NoteWhereInput[]
-    title?: StringFilter<"Note"> | string
-    content?: StringFilter<"Note"> | string
-    laneId?: StringNullableFilter<"Note"> | string | null
-    userId?: StringFilter<"Note"> | string
-    createdAt?: DateTimeFilter<"Note"> | Date | string
-    updatedAt?: DateTimeFilter<"Note"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    lane?: XOR<LaneNullableScalarRelationFilter, LaneWhereInput> | null
-  }, "id">
-
-  export type NoteOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    laneId?: SortOrderInput | SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: NoteCountOrderByAggregateInput
-    _max?: NoteMaxOrderByAggregateInput
-    _min?: NoteMinOrderByAggregateInput
-  }
-
-  export type NoteScalarWhereWithAggregatesInput = {
-    AND?: NoteScalarWhereWithAggregatesInput | NoteScalarWhereWithAggregatesInput[]
-    OR?: NoteScalarWhereWithAggregatesInput[]
-    NOT?: NoteScalarWhereWithAggregatesInput | NoteScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Note"> | string
-    title?: StringWithAggregatesFilter<"Note"> | string
-    content?: StringWithAggregatesFilter<"Note"> | string
-    laneId?: StringNullableWithAggregatesFilter<"Note"> | string | null
-    userId?: StringWithAggregatesFilter<"Note"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
-  }
-
-  export type UserCreateInput = {
-    id?: string
-    email: string
-    password: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneCreateNestedManyWithoutUserInput
-    calendars?: CalendarCreateNestedManyWithoutUserInput
-    notes?: NoteCreateNestedManyWithoutUserInput
+    description?: string | null
+    created_at?: Date | string | null
+    users?: usersCreateNestedManyWithoutLanesInput
   }
 
-  export type UserUncheckedCreateInput = {
+  export type lanesUncheckedCreateInput = {
     id?: string
-    email: string
-    password: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneUncheckedCreateNestedManyWithoutUserInput
-    calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
-    notes?: NoteUncheckedCreateNestedManyWithoutUserInput
+    description?: string | null
+    created_at?: Date | string | null
+    users?: usersUncheckedCreateNestedManyWithoutLanesInput
   }
 
-  export type UserUpdateInput = {
+  export type lanesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUpdateManyWithoutUserNestedInput
-    calendars?: CalendarUpdateManyWithoutUserNestedInput
-    notes?: NoteUpdateManyWithoutUserNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: usersUpdateManyWithoutLanesNestedInput
   }
 
-  export type UserUncheckedUpdateInput = {
+  export type lanesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUncheckedUpdateManyWithoutUserNestedInput
-    calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: usersUncheckedUpdateManyWithoutLanesNestedInput
   }
 
-  export type UserCreateManyInput = {
+  export type lanesCreateManyInput = {
     id?: string
-    email: string
-    password: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    description?: string | null
+    created_at?: Date | string | null
   }
 
-  export type UserUpdateManyMutationInput = {
+  export type lanesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserUncheckedUpdateManyInput = {
+  export type lanesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LaneCreateInput = {
-    id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutLanesInput
-    notes?: NoteCreateNestedManyWithoutLaneInput
-  }
-
-  export type LaneUncheckedCreateInput = {
-    id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    notes?: NoteUncheckedCreateNestedManyWithoutLaneInput
-  }
-
-  export type LaneUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutLanesNestedInput
-    notes?: NoteUpdateManyWithoutLaneNestedInput
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type LaneUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    notes?: NoteUncheckedUpdateManyWithoutLaneNestedInput
-  }
-
-  export type LaneCreateManyInput = {
+  export type sessionsCreateInput = {
     id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
+    users: usersCreateNestedOneWithoutSessionsInput
   }
 
-  export type LaneUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LaneUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CalendarCreateInput = {
+  export type sessionsUncheckedCreateInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutCalendarsInput
+    user_id: string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
   }
 
-  export type CalendarUncheckedCreateInput = {
+  export type sessionsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: usersUpdateOneRequiredWithoutSessionsNestedInput
+  }
+
+  export type sessionsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type sessionsCreateManyInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    user_id: string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
   }
 
-  export type CalendarUpdateInput = {
+  export type sessionsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutCalendarsNestedInput
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CalendarUncheckedUpdateInput = {
+  export type sessionsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CalendarCreateManyInput = {
+  export type usersCreateInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
+    sessions?: sessionsCreateNestedManyWithoutUsersInput
+    lanes?: lanesCreateNestedOneWithoutUsersInput
   }
 
-  export type CalendarUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CalendarUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteCreateInput = {
+  export type usersUncheckedCreateInput = {
     id?: string
-    title: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutNotesInput
-    lane?: LaneCreateNestedOneWithoutNotesInput
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    lane_id?: string | null
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
+    sessions?: sessionsUncheckedCreateNestedManyWithoutUsersInput
   }
 
-  export type NoteUncheckedCreateInput = {
+  export type usersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: sessionsUpdateManyWithoutUsersNestedInput
+    lanes?: lanesUpdateOneWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    lane_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: sessionsUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersCreateManyInput = {
     id?: string
-    title: string
-    content: string
-    laneId?: string | null
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    lane_id?: string | null
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
   }
 
-  export type NoteUpdateInput = {
+  export type usersUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutNotesNestedInput
-    lane?: LaneUpdateOneWithoutNotesNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type NoteUncheckedUpdateInput = {
+  export type usersUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    laneId?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    lane_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type NoteCreateManyInput = {
-    id?: string
-    title: string
-    content: string
-    laneId?: string | null
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type NoteUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    laneId?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6427,72 +4960,81 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type LaneListRelationFilter = {
-    every?: LaneWhereInput
-    some?: LaneWhereInput
-    none?: LaneWhereInput
+  export type UsersListRelationFilter = {
+    every?: usersWhereInput
+    some?: usersWhereInput
+    none?: usersWhereInput
   }
 
-  export type CalendarListRelationFilter = {
-    every?: CalendarWhereInput
-    some?: CalendarWhereInput
-    none?: CalendarWhereInput
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
-  export type NoteListRelationFilter = {
-    every?: NoteWhereInput
-    some?: NoteWhereInput
-    none?: NoteWhereInput
-  }
-
-  export type LaneOrderByRelationAggregateInput = {
+  export type usersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type CalendarOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type NoteOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserCountOrderByAggregateInput = {
+  export type lanesCountOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
   }
 
-  export type UserMaxOrderByAggregateInput = {
+  export type lanesMaxOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
   }
 
-  export type UserMinOrderByAggregateInput = {
+  export type lanesMinOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6513,75 +5055,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type LaneCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    color?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type LaneMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    color?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type LaneMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    color?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6600,58 +5073,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type CalendarCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    date?: SortOrder
-    endDate?: SortOrder
-    isAllDay?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CalendarMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    date?: SortOrder
-    endDate?: SortOrder
-    isAllDay?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CalendarMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    date?: SortOrder
-    endDate?: SortOrder
-    isAllDay?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -6666,293 +5087,283 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type UsersScalarRelationFilter = {
+    is?: usersWhereInput
+    isNot?: usersWhereInput
+  }
+
+  export type sessionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    refresh_token?: SortOrder
+    user_agent?: SortOrder
+    ip_address?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type sessionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    refresh_token?: SortOrder
+    user_agent?: SortOrder
+    ip_address?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type sessionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    refresh_token?: SortOrder
+    user_agent?: SortOrder
+    ip_address?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type LaneNullableScalarRelationFilter = {
-    is?: LaneWhereInput | null
-    isNot?: LaneWhereInput | null
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NoteCountOrderByAggregateInput = {
+  export type SessionsListRelationFilter = {
+    every?: sessionsWhereInput
+    some?: sessionsWhereInput
+    none?: sessionsWhereInput
+  }
+
+  export type LanesNullableScalarRelationFilter = {
+    is?: lanesWhereInput | null
+    isNot?: lanesWhereInput | null
+  }
+
+  export type sessionsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type usersCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    laneId?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    phone?: SortOrder
+    lane_id?: SortOrder
+    created_at?: SortOrder
+    provider?: SortOrder
+    provider_id?: SortOrder
   }
 
-  export type NoteMaxOrderByAggregateInput = {
+  export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    laneId?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    phone?: SortOrder
+    lane_id?: SortOrder
+    created_at?: SortOrder
+    provider?: SortOrder
+    provider_id?: SortOrder
   }
 
-  export type NoteMinOrderByAggregateInput = {
+  export type usersMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    laneId?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    phone?: SortOrder
+    lane_id?: SortOrder
+    created_at?: SortOrder
+    provider?: SortOrder
+    provider_id?: SortOrder
   }
 
-  export type LaneCreateNestedManyWithoutUserInput = {
-    create?: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput> | LaneCreateWithoutUserInput[] | LaneUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LaneCreateOrConnectWithoutUserInput | LaneCreateOrConnectWithoutUserInput[]
-    createMany?: LaneCreateManyUserInputEnvelope
-    connect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type CalendarCreateNestedManyWithoutUserInput = {
-    create?: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput> | CalendarCreateWithoutUserInput[] | CalendarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CalendarCreateOrConnectWithoutUserInput | CalendarCreateOrConnectWithoutUserInput[]
-    createMany?: CalendarCreateManyUserInputEnvelope
-    connect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
+  export type usersCreateNestedManyWithoutLanesInput = {
+    create?: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput> | usersCreateWithoutLanesInput[] | usersUncheckedCreateWithoutLanesInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutLanesInput | usersCreateOrConnectWithoutLanesInput[]
+    createMany?: usersCreateManyLanesInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
   }
 
-  export type NoteCreateNestedManyWithoutUserInput = {
-    create?: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput> | NoteCreateWithoutUserInput[] | NoteUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
-    createMany?: NoteCreateManyUserInputEnvelope
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-  }
-
-  export type LaneUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput> | LaneCreateWithoutUserInput[] | LaneUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LaneCreateOrConnectWithoutUserInput | LaneCreateOrConnectWithoutUserInput[]
-    createMany?: LaneCreateManyUserInputEnvelope
-    connect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-  }
-
-  export type CalendarUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput> | CalendarCreateWithoutUserInput[] | CalendarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CalendarCreateOrConnectWithoutUserInput | CalendarCreateOrConnectWithoutUserInput[]
-    createMany?: CalendarCreateManyUserInputEnvelope
-    connect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-  }
-
-  export type NoteUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput> | NoteCreateWithoutUserInput[] | NoteUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
-    createMany?: NoteCreateManyUserInputEnvelope
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
+  export type usersUncheckedCreateNestedManyWithoutLanesInput = {
+    create?: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput> | usersCreateWithoutLanesInput[] | usersUncheckedCreateWithoutLanesInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutLanesInput | usersCreateOrConnectWithoutLanesInput[]
+    createMany?: usersCreateManyLanesInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type LaneUpdateManyWithoutUserNestedInput = {
-    create?: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput> | LaneCreateWithoutUserInput[] | LaneUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LaneCreateOrConnectWithoutUserInput | LaneCreateOrConnectWithoutUserInput[]
-    upsert?: LaneUpsertWithWhereUniqueWithoutUserInput | LaneUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: LaneCreateManyUserInputEnvelope
-    set?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    disconnect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    delete?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    connect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    update?: LaneUpdateWithWhereUniqueWithoutUserInput | LaneUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: LaneUpdateManyWithWhereWithoutUserInput | LaneUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: LaneScalarWhereInput | LaneScalarWhereInput[]
-  }
-
-  export type CalendarUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput> | CalendarCreateWithoutUserInput[] | CalendarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CalendarCreateOrConnectWithoutUserInput | CalendarCreateOrConnectWithoutUserInput[]
-    upsert?: CalendarUpsertWithWhereUniqueWithoutUserInput | CalendarUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CalendarCreateManyUserInputEnvelope
-    set?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    disconnect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    delete?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    connect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    update?: CalendarUpdateWithWhereUniqueWithoutUserInput | CalendarUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CalendarUpdateManyWithWhereWithoutUserInput | CalendarUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
-  }
-
-  export type NoteUpdateManyWithoutUserNestedInput = {
-    create?: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput> | NoteCreateWithoutUserInput[] | NoteUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutUserInput | NoteUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: NoteCreateManyUserInputEnvelope
-    set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutUserInput | NoteUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutUserInput | NoteUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
-  }
-
-  export type LaneUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput> | LaneCreateWithoutUserInput[] | LaneUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LaneCreateOrConnectWithoutUserInput | LaneCreateOrConnectWithoutUserInput[]
-    upsert?: LaneUpsertWithWhereUniqueWithoutUserInput | LaneUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: LaneCreateManyUserInputEnvelope
-    set?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    disconnect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    delete?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    connect?: LaneWhereUniqueInput | LaneWhereUniqueInput[]
-    update?: LaneUpdateWithWhereUniqueWithoutUserInput | LaneUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: LaneUpdateManyWithWhereWithoutUserInput | LaneUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: LaneScalarWhereInput | LaneScalarWhereInput[]
-  }
-
-  export type CalendarUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput> | CalendarCreateWithoutUserInput[] | CalendarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: CalendarCreateOrConnectWithoutUserInput | CalendarCreateOrConnectWithoutUserInput[]
-    upsert?: CalendarUpsertWithWhereUniqueWithoutUserInput | CalendarUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: CalendarCreateManyUserInputEnvelope
-    set?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    disconnect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    delete?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    connect?: CalendarWhereUniqueInput | CalendarWhereUniqueInput[]
-    update?: CalendarUpdateWithWhereUniqueWithoutUserInput | CalendarUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: CalendarUpdateManyWithWhereWithoutUserInput | CalendarUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
-  }
-
-  export type NoteUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput> | NoteCreateWithoutUserInput[] | NoteUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutUserInput | NoteUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: NoteCreateManyUserInputEnvelope
-    set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutUserInput | NoteUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutUserInput | NoteUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutLanesInput = {
-    create?: XOR<UserCreateWithoutLanesInput, UserUncheckedCreateWithoutLanesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutLanesInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type NoteCreateNestedManyWithoutLaneInput = {
-    create?: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput> | NoteCreateWithoutLaneInput[] | NoteUncheckedCreateWithoutLaneInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutLaneInput | NoteCreateOrConnectWithoutLaneInput[]
-    createMany?: NoteCreateManyLaneInputEnvelope
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-  }
-
-  export type NoteUncheckedCreateNestedManyWithoutLaneInput = {
-    create?: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput> | NoteCreateWithoutLaneInput[] | NoteUncheckedCreateWithoutLaneInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutLaneInput | NoteCreateOrConnectWithoutLaneInput[]
-    createMany?: NoteCreateManyLaneInputEnvelope
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type UserUpdateOneRequiredWithoutLanesNestedInput = {
-    create?: XOR<UserCreateWithoutLanesInput, UserUncheckedCreateWithoutLanesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutLanesInput
-    upsert?: UserUpsertWithoutLanesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLanesInput, UserUpdateWithoutLanesInput>, UserUncheckedUpdateWithoutLanesInput>
-  }
-
-  export type NoteUpdateManyWithoutLaneNestedInput = {
-    create?: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput> | NoteCreateWithoutLaneInput[] | NoteUncheckedCreateWithoutLaneInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutLaneInput | NoteCreateOrConnectWithoutLaneInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutLaneInput | NoteUpsertWithWhereUniqueWithoutLaneInput[]
-    createMany?: NoteCreateManyLaneInputEnvelope
-    set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutLaneInput | NoteUpdateWithWhereUniqueWithoutLaneInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutLaneInput | NoteUpdateManyWithWhereWithoutLaneInput[]
-    deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
-  }
-
-  export type NoteUncheckedUpdateManyWithoutLaneNestedInput = {
-    create?: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput> | NoteCreateWithoutLaneInput[] | NoteUncheckedCreateWithoutLaneInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutLaneInput | NoteCreateOrConnectWithoutLaneInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutLaneInput | NoteUpsertWithWhereUniqueWithoutLaneInput[]
-    createMany?: NoteCreateManyLaneInputEnvelope
-    set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutLaneInput | NoteUpdateWithWhereUniqueWithoutLaneInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutLaneInput | NoteUpdateManyWithWhereWithoutLaneInput[]
-    deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutCalendarsInput = {
-    create?: XOR<UserCreateWithoutCalendarsInput, UserUncheckedCreateWithoutCalendarsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCalendarsInput
-    connect?: UserWhereUniqueInput
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type usersUpdateManyWithoutLanesNestedInput = {
+    create?: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput> | usersCreateWithoutLanesInput[] | usersUncheckedCreateWithoutLanesInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutLanesInput | usersCreateOrConnectWithoutLanesInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutLanesInput | usersUpsertWithWhereUniqueWithoutLanesInput[]
+    createMany?: usersCreateManyLanesInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutLanesInput | usersUpdateWithWhereUniqueWithoutLanesInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutLanesInput | usersUpdateManyWithWhereWithoutLanesInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutCalendarsNestedInput = {
-    create?: XOR<UserCreateWithoutCalendarsInput, UserUncheckedCreateWithoutCalendarsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCalendarsInput
-    upsert?: UserUpsertWithoutCalendarsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCalendarsInput, UserUpdateWithoutCalendarsInput>, UserUncheckedUpdateWithoutCalendarsInput>
+  export type usersUncheckedUpdateManyWithoutLanesNestedInput = {
+    create?: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput> | usersCreateWithoutLanesInput[] | usersUncheckedCreateWithoutLanesInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutLanesInput | usersCreateOrConnectWithoutLanesInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutLanesInput | usersUpsertWithWhereUniqueWithoutLanesInput[]
+    createMany?: usersCreateManyLanesInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutLanesInput | usersUpdateWithWhereUniqueWithoutLanesInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutLanesInput | usersUpdateManyWithWhereWithoutLanesInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutNotesInput = {
-    create?: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutNotesInput
-    connect?: UserWhereUniqueInput
+  export type usersCreateNestedOneWithoutSessionsInput = {
+    create?: XOR<usersCreateWithoutSessionsInput, usersUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSessionsInput
+    connect?: usersWhereUniqueInput
   }
 
-  export type LaneCreateNestedOneWithoutNotesInput = {
-    create?: XOR<LaneCreateWithoutNotesInput, LaneUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: LaneCreateOrConnectWithoutNotesInput
-    connect?: LaneWhereUniqueInput
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
-  export type UserUpdateOneRequiredWithoutNotesNestedInput = {
-    create?: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutNotesInput
-    upsert?: UserUpsertWithoutNotesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotesInput, UserUpdateWithoutNotesInput>, UserUncheckedUpdateWithoutNotesInput>
+  export type usersUpdateOneRequiredWithoutSessionsNestedInput = {
+    create?: XOR<usersCreateWithoutSessionsInput, usersUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSessionsInput
+    upsert?: usersUpsertWithoutSessionsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutSessionsInput, usersUpdateWithoutSessionsInput>, usersUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type LaneUpdateOneWithoutNotesNestedInput = {
-    create?: XOR<LaneCreateWithoutNotesInput, LaneUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: LaneCreateOrConnectWithoutNotesInput
-    upsert?: LaneUpsertWithoutNotesInput
-    disconnect?: LaneWhereInput | boolean
-    delete?: LaneWhereInput | boolean
-    connect?: LaneWhereUniqueInput
-    update?: XOR<XOR<LaneUpdateToOneWithWhereWithoutNotesInput, LaneUpdateWithoutNotesInput>, LaneUncheckedUpdateWithoutNotesInput>
+  export type sessionsCreateNestedManyWithoutUsersInput = {
+    create?: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput> | sessionsCreateWithoutUsersInput[] | sessionsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: sessionsCreateOrConnectWithoutUsersInput | sessionsCreateOrConnectWithoutUsersInput[]
+    createMany?: sessionsCreateManyUsersInputEnvelope
+    connect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+  }
+
+  export type lanesCreateNestedOneWithoutUsersInput = {
+    create?: XOR<lanesCreateWithoutUsersInput, lanesUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: lanesCreateOrConnectWithoutUsersInput
+    connect?: lanesWhereUniqueInput
+  }
+
+  export type sessionsUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput> | sessionsCreateWithoutUsersInput[] | sessionsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: sessionsCreateOrConnectWithoutUsersInput | sessionsCreateOrConnectWithoutUsersInput[]
+    createMany?: sessionsCreateManyUsersInputEnvelope
+    connect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+  }
+
+  export type sessionsUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput> | sessionsCreateWithoutUsersInput[] | sessionsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: sessionsCreateOrConnectWithoutUsersInput | sessionsCreateOrConnectWithoutUsersInput[]
+    upsert?: sessionsUpsertWithWhereUniqueWithoutUsersInput | sessionsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: sessionsCreateManyUsersInputEnvelope
+    set?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    disconnect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    delete?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    connect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    update?: sessionsUpdateWithWhereUniqueWithoutUsersInput | sessionsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: sessionsUpdateManyWithWhereWithoutUsersInput | sessionsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: sessionsScalarWhereInput | sessionsScalarWhereInput[]
+  }
+
+  export type lanesUpdateOneWithoutUsersNestedInput = {
+    create?: XOR<lanesCreateWithoutUsersInput, lanesUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: lanesCreateOrConnectWithoutUsersInput
+    upsert?: lanesUpsertWithoutUsersInput
+    disconnect?: lanesWhereInput | boolean
+    delete?: lanesWhereInput | boolean
+    connect?: lanesWhereUniqueInput
+    update?: XOR<XOR<lanesUpdateToOneWithWhereWithoutUsersInput, lanesUpdateWithoutUsersInput>, lanesUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type sessionsUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput> | sessionsCreateWithoutUsersInput[] | sessionsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: sessionsCreateOrConnectWithoutUsersInput | sessionsCreateOrConnectWithoutUsersInput[]
+    upsert?: sessionsUpsertWithWhereUniqueWithoutUsersInput | sessionsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: sessionsCreateManyUsersInputEnvelope
+    set?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    disconnect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    delete?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    connect?: sessionsWhereUniqueInput | sessionsWhereUniqueInput[]
+    update?: sessionsUpdateWithWhereUniqueWithoutUsersInput | sessionsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: sessionsUpdateManyWithWhereWithoutUsersInput | sessionsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: sessionsScalarWhereInput | sessionsScalarWhereInput[]
+  }
+
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6969,15 +5380,54 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6995,45 +5445,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7064,22 +5475,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -7094,625 +5489,366 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type LaneCreateWithoutUserInput = {
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type usersCreateWithoutLanesInput = {
     id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    notes?: NoteCreateNestedManyWithoutLaneInput
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
+    sessions?: sessionsCreateNestedManyWithoutUsersInput
   }
 
-  export type LaneUncheckedCreateWithoutUserInput = {
+  export type usersUncheckedCreateWithoutLanesInput = {
     id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    notes?: NoteUncheckedCreateNestedManyWithoutLaneInput
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
+    sessions?: sessionsUncheckedCreateNestedManyWithoutUsersInput
   }
 
-  export type LaneCreateOrConnectWithoutUserInput = {
-    where: LaneWhereUniqueInput
-    create: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput>
+  export type usersCreateOrConnectWithoutLanesInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput>
   }
 
-  export type LaneCreateManyUserInputEnvelope = {
-    data: LaneCreateManyUserInput | LaneCreateManyUserInput[]
+  export type usersCreateManyLanesInputEnvelope = {
+    data: usersCreateManyLanesInput | usersCreateManyLanesInput[]
     skipDuplicates?: boolean
   }
 
-  export type CalendarCreateWithoutUserInput = {
+  export type usersUpsertWithWhereUniqueWithoutLanesInput = {
+    where: usersWhereUniqueInput
+    update: XOR<usersUpdateWithoutLanesInput, usersUncheckedUpdateWithoutLanesInput>
+    create: XOR<usersCreateWithoutLanesInput, usersUncheckedCreateWithoutLanesInput>
+  }
+
+  export type usersUpdateWithWhereUniqueWithoutLanesInput = {
+    where: usersWhereUniqueInput
+    data: XOR<usersUpdateWithoutLanesInput, usersUncheckedUpdateWithoutLanesInput>
+  }
+
+  export type usersUpdateManyWithWhereWithoutLanesInput = {
+    where: usersScalarWhereInput
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutLanesInput>
+  }
+
+  export type usersScalarWhereInput = {
+    AND?: usersScalarWhereInput | usersScalarWhereInput[]
+    OR?: usersScalarWhereInput[]
+    NOT?: usersScalarWhereInput | usersScalarWhereInput[]
+    id?: UuidFilter<"users"> | string
+    name?: StringFilter<"users"> | string
+    email?: StringFilter<"users"> | string
+    password?: StringNullableFilter<"users"> | string | null
+    phone?: StringFilter<"users"> | string
+    lane_id?: UuidNullableFilter<"users"> | string | null
+    created_at?: DateTimeNullableFilter<"users"> | Date | string | null
+    provider?: StringNullableFilter<"users"> | string | null
+    provider_id?: StringNullableFilter<"users"> | string | null
+  }
+
+  export type usersCreateWithoutSessionsInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
+    lanes?: lanesCreateNestedOneWithoutUsersInput
   }
 
-  export type CalendarUncheckedCreateWithoutUserInput = {
+  export type usersUncheckedCreateWithoutSessionsInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    lane_id?: string | null
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
   }
 
-  export type CalendarCreateOrConnectWithoutUserInput = {
-    where: CalendarWhereUniqueInput
-    create: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput>
+  export type usersCreateOrConnectWithoutSessionsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutSessionsInput, usersUncheckedCreateWithoutSessionsInput>
   }
 
-  export type CalendarCreateManyUserInputEnvelope = {
-    data: CalendarCreateManyUserInput | CalendarCreateManyUserInput[]
+  export type usersUpsertWithoutSessionsInput = {
+    update: XOR<usersUpdateWithoutSessionsInput, usersUncheckedUpdateWithoutSessionsInput>
+    create: XOR<usersCreateWithoutSessionsInput, usersUncheckedCreateWithoutSessionsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutSessionsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutSessionsInput, usersUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type usersUpdateWithoutSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+    lanes?: lanesUpdateOneWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    lane_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type sessionsCreateWithoutUsersInput = {
+    id?: string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
+  }
+
+  export type sessionsUncheckedCreateWithoutUsersInput = {
+    id?: string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
+  }
+
+  export type sessionsCreateOrConnectWithoutUsersInput = {
+    where: sessionsWhereUniqueInput
+    create: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput>
+  }
+
+  export type sessionsCreateManyUsersInputEnvelope = {
+    data: sessionsCreateManyUsersInput | sessionsCreateManyUsersInput[]
     skipDuplicates?: boolean
   }
 
-  export type NoteCreateWithoutUserInput = {
+  export type lanesCreateWithoutUsersInput = {
     id?: string
-    title: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lane?: LaneCreateNestedOneWithoutNotesInput
-  }
-
-  export type NoteUncheckedCreateWithoutUserInput = {
-    id?: string
-    title: string
-    content: string
-    laneId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type NoteCreateOrConnectWithoutUserInput = {
-    where: NoteWhereUniqueInput
-    create: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput>
-  }
-
-  export type NoteCreateManyUserInputEnvelope = {
-    data: NoteCreateManyUserInput | NoteCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type LaneUpsertWithWhereUniqueWithoutUserInput = {
-    where: LaneWhereUniqueInput
-    update: XOR<LaneUpdateWithoutUserInput, LaneUncheckedUpdateWithoutUserInput>
-    create: XOR<LaneCreateWithoutUserInput, LaneUncheckedCreateWithoutUserInput>
-  }
-
-  export type LaneUpdateWithWhereUniqueWithoutUserInput = {
-    where: LaneWhereUniqueInput
-    data: XOR<LaneUpdateWithoutUserInput, LaneUncheckedUpdateWithoutUserInput>
-  }
-
-  export type LaneUpdateManyWithWhereWithoutUserInput = {
-    where: LaneScalarWhereInput
-    data: XOR<LaneUpdateManyMutationInput, LaneUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type LaneScalarWhereInput = {
-    AND?: LaneScalarWhereInput | LaneScalarWhereInput[]
-    OR?: LaneScalarWhereInput[]
-    NOT?: LaneScalarWhereInput | LaneScalarWhereInput[]
-    id?: StringFilter<"Lane"> | string
-    title?: StringFilter<"Lane"> | string
-    description?: StringNullableFilter<"Lane"> | string | null
-    color?: StringNullableFilter<"Lane"> | string | null
-    userId?: StringFilter<"Lane"> | string
-    createdAt?: DateTimeFilter<"Lane"> | Date | string
-    updatedAt?: DateTimeFilter<"Lane"> | Date | string
-  }
-
-  export type CalendarUpsertWithWhereUniqueWithoutUserInput = {
-    where: CalendarWhereUniqueInput
-    update: XOR<CalendarUpdateWithoutUserInput, CalendarUncheckedUpdateWithoutUserInput>
-    create: XOR<CalendarCreateWithoutUserInput, CalendarUncheckedCreateWithoutUserInput>
-  }
-
-  export type CalendarUpdateWithWhereUniqueWithoutUserInput = {
-    where: CalendarWhereUniqueInput
-    data: XOR<CalendarUpdateWithoutUserInput, CalendarUncheckedUpdateWithoutUserInput>
-  }
-
-  export type CalendarUpdateManyWithWhereWithoutUserInput = {
-    where: CalendarScalarWhereInput
-    data: XOR<CalendarUpdateManyMutationInput, CalendarUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type CalendarScalarWhereInput = {
-    AND?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
-    OR?: CalendarScalarWhereInput[]
-    NOT?: CalendarScalarWhereInput | CalendarScalarWhereInput[]
-    id?: StringFilter<"Calendar"> | string
-    title?: StringFilter<"Calendar"> | string
-    description?: StringNullableFilter<"Calendar"> | string | null
-    date?: DateTimeFilter<"Calendar"> | Date | string
-    endDate?: DateTimeNullableFilter<"Calendar"> | Date | string | null
-    isAllDay?: BoolFilter<"Calendar"> | boolean
-    userId?: StringFilter<"Calendar"> | string
-    createdAt?: DateTimeFilter<"Calendar"> | Date | string
-    updatedAt?: DateTimeFilter<"Calendar"> | Date | string
-  }
-
-  export type NoteUpsertWithWhereUniqueWithoutUserInput = {
-    where: NoteWhereUniqueInput
-    update: XOR<NoteUpdateWithoutUserInput, NoteUncheckedUpdateWithoutUserInput>
-    create: XOR<NoteCreateWithoutUserInput, NoteUncheckedCreateWithoutUserInput>
-  }
-
-  export type NoteUpdateWithWhereUniqueWithoutUserInput = {
-    where: NoteWhereUniqueInput
-    data: XOR<NoteUpdateWithoutUserInput, NoteUncheckedUpdateWithoutUserInput>
-  }
-
-  export type NoteUpdateManyWithWhereWithoutUserInput = {
-    where: NoteScalarWhereInput
-    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type NoteScalarWhereInput = {
-    AND?: NoteScalarWhereInput | NoteScalarWhereInput[]
-    OR?: NoteScalarWhereInput[]
-    NOT?: NoteScalarWhereInput | NoteScalarWhereInput[]
-    id?: StringFilter<"Note"> | string
-    title?: StringFilter<"Note"> | string
-    content?: StringFilter<"Note"> | string
-    laneId?: StringNullableFilter<"Note"> | string | null
-    userId?: StringFilter<"Note"> | string
-    createdAt?: DateTimeFilter<"Note"> | Date | string
-    updatedAt?: DateTimeFilter<"Note"> | Date | string
-  }
-
-  export type UserCreateWithoutLanesInput = {
-    id?: string
-    email: string
-    password: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    calendars?: CalendarCreateNestedManyWithoutUserInput
-    notes?: NoteCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutLanesInput = {
-    id?: string
-    email: string
-    password: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
-    notes?: NoteUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutLanesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutLanesInput, UserUncheckedCreateWithoutLanesInput>
-  }
-
-  export type NoteCreateWithoutLaneInput = {
-    id?: string
-    title: string
-    content: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutNotesInput
-  }
-
-  export type NoteUncheckedCreateWithoutLaneInput = {
-    id?: string
-    title: string
-    content: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type NoteCreateOrConnectWithoutLaneInput = {
-    where: NoteWhereUniqueInput
-    create: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput>
-  }
-
-  export type NoteCreateManyLaneInputEnvelope = {
-    data: NoteCreateManyLaneInput | NoteCreateManyLaneInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserUpsertWithoutLanesInput = {
-    update: XOR<UserUpdateWithoutLanesInput, UserUncheckedUpdateWithoutLanesInput>
-    create: XOR<UserCreateWithoutLanesInput, UserUncheckedCreateWithoutLanesInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutLanesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutLanesInput, UserUncheckedUpdateWithoutLanesInput>
-  }
-
-  export type UserUpdateWithoutLanesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    calendars?: CalendarUpdateManyWithoutUserNestedInput
-    notes?: NoteUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutLanesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type NoteUpsertWithWhereUniqueWithoutLaneInput = {
-    where: NoteWhereUniqueInput
-    update: XOR<NoteUpdateWithoutLaneInput, NoteUncheckedUpdateWithoutLaneInput>
-    create: XOR<NoteCreateWithoutLaneInput, NoteUncheckedCreateWithoutLaneInput>
-  }
-
-  export type NoteUpdateWithWhereUniqueWithoutLaneInput = {
-    where: NoteWhereUniqueInput
-    data: XOR<NoteUpdateWithoutLaneInput, NoteUncheckedUpdateWithoutLaneInput>
-  }
-
-  export type NoteUpdateManyWithWhereWithoutLaneInput = {
-    where: NoteScalarWhereInput
-    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutLaneInput>
-  }
-
-  export type UserCreateWithoutCalendarsInput = {
-    id?: string
-    email: string
-    password: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneCreateNestedManyWithoutUserInput
-    notes?: NoteCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutCalendarsInput = {
-    id?: string
-    email: string
-    password: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneUncheckedCreateNestedManyWithoutUserInput
-    notes?: NoteUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutCalendarsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCalendarsInput, UserUncheckedCreateWithoutCalendarsInput>
-  }
-
-  export type UserUpsertWithoutCalendarsInput = {
-    update: XOR<UserUpdateWithoutCalendarsInput, UserUncheckedUpdateWithoutCalendarsInput>
-    create: XOR<UserCreateWithoutCalendarsInput, UserUncheckedCreateWithoutCalendarsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCalendarsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCalendarsInput, UserUncheckedUpdateWithoutCalendarsInput>
-  }
-
-  export type UserUpdateWithoutCalendarsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUpdateManyWithoutUserNestedInput
-    notes?: NoteUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCalendarsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUncheckedUpdateManyWithoutUserNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserCreateWithoutNotesInput = {
-    id?: string
-    email: string
-    password: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneCreateNestedManyWithoutUserInput
-    calendars?: CalendarCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutNotesInput = {
-    id?: string
-    email: string
-    password: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    lanes?: LaneUncheckedCreateNestedManyWithoutUserInput
-    calendars?: CalendarUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutNotesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
-  }
-
-  export type LaneCreateWithoutNotesInput = {
-    id?: string
-    title: string
     description?: string | null
-    color?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutLanesInput
+    created_at?: Date | string | null
   }
 
-  export type LaneUncheckedCreateWithoutNotesInput = {
+  export type lanesUncheckedCreateWithoutUsersInput = {
     id?: string
-    title: string
+    name: string
     description?: string | null
-    color?: string | null
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string | null
   }
 
-  export type LaneCreateOrConnectWithoutNotesInput = {
-    where: LaneWhereUniqueInput
-    create: XOR<LaneCreateWithoutNotesInput, LaneUncheckedCreateWithoutNotesInput>
+  export type lanesCreateOrConnectWithoutUsersInput = {
+    where: lanesWhereUniqueInput
+    create: XOR<lanesCreateWithoutUsersInput, lanesUncheckedCreateWithoutUsersInput>
   }
 
-  export type UserUpsertWithoutNotesInput = {
-    update: XOR<UserUpdateWithoutNotesInput, UserUncheckedUpdateWithoutNotesInput>
-    create: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
-    where?: UserWhereInput
+  export type sessionsUpsertWithWhereUniqueWithoutUsersInput = {
+    where: sessionsWhereUniqueInput
+    update: XOR<sessionsUpdateWithoutUsersInput, sessionsUncheckedUpdateWithoutUsersInput>
+    create: XOR<sessionsCreateWithoutUsersInput, sessionsUncheckedCreateWithoutUsersInput>
   }
 
-  export type UserUpdateToOneWithWhereWithoutNotesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutNotesInput, UserUncheckedUpdateWithoutNotesInput>
+  export type sessionsUpdateWithWhereUniqueWithoutUsersInput = {
+    where: sessionsWhereUniqueInput
+    data: XOR<sessionsUpdateWithoutUsersInput, sessionsUncheckedUpdateWithoutUsersInput>
   }
 
-  export type UserUpdateWithoutNotesInput = {
+  export type sessionsUpdateManyWithWhereWithoutUsersInput = {
+    where: sessionsScalarWhereInput
+    data: XOR<sessionsUpdateManyMutationInput, sessionsUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type sessionsScalarWhereInput = {
+    AND?: sessionsScalarWhereInput | sessionsScalarWhereInput[]
+    OR?: sessionsScalarWhereInput[]
+    NOT?: sessionsScalarWhereInput | sessionsScalarWhereInput[]
+    id?: UuidFilter<"sessions"> | string
+    user_id?: UuidFilter<"sessions"> | string
+    refresh_token?: StringFilter<"sessions"> | string
+    user_agent?: StringNullableFilter<"sessions"> | string | null
+    ip_address?: StringNullableFilter<"sessions"> | string | null
+    created_at?: DateTimeFilter<"sessions"> | Date | string
+    updated_at?: DateTimeFilter<"sessions"> | Date | string
+  }
+
+  export type lanesUpsertWithoutUsersInput = {
+    update: XOR<lanesUpdateWithoutUsersInput, lanesUncheckedUpdateWithoutUsersInput>
+    create: XOR<lanesCreateWithoutUsersInput, lanesUncheckedCreateWithoutUsersInput>
+    where?: lanesWhereInput
+  }
+
+  export type lanesUpdateToOneWithWhereWithoutUsersInput = {
+    where?: lanesWhereInput
+    data: XOR<lanesUpdateWithoutUsersInput, lanesUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type lanesUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUpdateManyWithoutUserNestedInput
-    calendars?: CalendarUpdateManyWithoutUserNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserUncheckedUpdateWithoutNotesInput = {
+  export type lanesUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lanes?: LaneUncheckedUpdateManyWithoutUserNestedInput
-    calendars?: CalendarUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type LaneUpsertWithoutNotesInput = {
-    update: XOR<LaneUpdateWithoutNotesInput, LaneUncheckedUpdateWithoutNotesInput>
-    create: XOR<LaneCreateWithoutNotesInput, LaneUncheckedCreateWithoutNotesInput>
-    where?: LaneWhereInput
-  }
-
-  export type LaneUpdateToOneWithWhereWithoutNotesInput = {
-    where?: LaneWhereInput
-    data: XOR<LaneUpdateWithoutNotesInput, LaneUncheckedUpdateWithoutNotesInput>
-  }
-
-  export type LaneUpdateWithoutNotesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutLanesNestedInput
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type LaneUncheckedUpdateWithoutNotesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type LaneCreateManyUserInput = {
+  export type usersCreateManyLanesInput = {
     id?: string
-    title: string
-    description?: string | null
-    color?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    name: string
+    email: string
+    password?: string | null
+    phone: string
+    created_at?: Date | string | null
+    provider?: string | null
+    provider_id?: string | null
   }
 
-  export type CalendarCreateManyUserInput = {
+  export type usersUpdateWithoutLanesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: sessionsUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutLanesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: sessionsUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateManyWithoutLanesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
+    provider_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type sessionsCreateManyUsersInput = {
     id?: string
-    title: string
-    description?: string | null
-    date: Date | string
-    endDate?: Date | string | null
-    isAllDay?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    refresh_token: string
+    user_agent?: string | null
+    ip_address?: string | null
+    created_at?: Date | string
+    updated_at: Date | string
   }
 
-  export type NoteCreateManyUserInput = {
-    id?: string
-    title: string
-    content: string
-    laneId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type LaneUpdateWithoutUserInput = {
+  export type sessionsUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    notes?: NoteUpdateManyWithoutLaneNestedInput
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LaneUncheckedUpdateWithoutUserInput = {
+  export type sessionsUncheckedUpdateWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    notes?: NoteUncheckedUpdateManyWithoutLaneNestedInput
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type LaneUncheckedUpdateManyWithoutUserInput = {
+  export type sessionsUncheckedUpdateManyWithoutUsersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CalendarUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CalendarUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CalendarUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    isAllDay?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    lane?: LaneUpdateOneWithoutNotesNestedInput
-  }
-
-  export type NoteUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    laneId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    laneId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteCreateManyLaneInput = {
-    id?: string
-    title: string
-    content: string
-    userId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type NoteUpdateWithoutLaneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutNotesNestedInput
-  }
-
-  export type NoteUncheckedUpdateWithoutLaneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NoteUncheckedUpdateManyWithoutLaneInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

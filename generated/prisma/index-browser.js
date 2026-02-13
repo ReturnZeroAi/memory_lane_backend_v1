@@ -120,45 +120,33 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.LanesScalarFieldEnum = {
   id: 'id',
+  name: 'name',
+  description: 'description',
+  created_at: 'created_at'
+};
+
+exports.Prisma.SessionsScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  refresh_token: 'refresh_token',
+  user_agent: 'user_agent',
+  ip_address: 'ip_address',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
   email: 'email',
   password: 'password',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.LaneScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  color: 'color',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.CalendarScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  date: 'date',
-  endDate: 'endDate',
-  isAllDay: 'isAllDay',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.NoteScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  content: 'content',
-  laneId: 'laneId',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  phone: 'phone',
+  lane_id: 'lane_id',
+  created_at: 'created_at',
+  provider: 'provider',
+  provider_id: 'provider_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -178,10 +166,9 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Lane: 'Lane',
-  Calendar: 'Calendar',
-  Note: 'Note'
+  lanes: 'lanes',
+  sessions: 'sessions',
+  users: 'users'
 };
 
 /**

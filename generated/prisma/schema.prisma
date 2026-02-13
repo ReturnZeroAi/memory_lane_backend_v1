@@ -8,68 +8,35 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  name      String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  lanes     Lane[]
-  calendars Calendar[]
-  notes     Note[]
-
-  @@map("users")
-}
-
-model Lane {
-  id          String   @id @default(uuid())
-  title       String
+model lanes {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String    @db.VarChar(100)
   description String?
-  color       String?
-  userId      String   @map("user_id")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  notes Note[]
-
-  @@index([userId])
-  @@map("lanes")
+  created_at  DateTime? @default(now()) @db.Timestamp(6)
+  users       users[]
 }
 
-model Calendar {
-  id          String    @id @default(uuid())
-  title       String
-  description String?
-  date        DateTime
-  endDate     DateTime? @map("end_date")
-  isAllDay    Boolean   @default(false) @map("is_all_day")
-  userId      String    @map("user_id")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([date])
-  @@map("calendars")
+model sessions {
+  id            String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id       String   @db.Uuid
+  refresh_token String
+  user_agent    String?  @db.VarChar(512)
+  ip_address    String?  @db.VarChar(45)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  updated_at    DateTime @db.Timestamp(6)
+  users         users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
 
-model Note {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
-  laneId    String?  @map("lane_id")
-  userId    String   @map("user_id")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  lane Lane? @relation(fields: [laneId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-  @@index([laneId])
-  @@map("notes")
+model users {
+  id          String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String     @db.VarChar(150)
+  email       String     @unique @db.VarChar(255)
+  password    String?
+  phone       String     @db.VarChar(20)
+  lane_id     String?    @db.Uuid
+  created_at  DateTime?  @default(now()) @db.Timestamp(6)
+  provider    String?    @db.VarChar(50)
+  provider_id String?    @db.VarChar(255)
+  sessions    sessions[]
+  lanes       lanes?     @relation(fields: [lane_id], references: [id], onUpdate: NoAction, map: "fk_lane")
 }

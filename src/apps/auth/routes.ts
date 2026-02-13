@@ -30,4 +30,16 @@ router.post(
   asyncHandler(authHandler.logout.bind(authHandler)),
 );
 
+router.get(
+  '/google',
+  authRateLimiter,
+  asyncHandler(authHandler.google.bind(authHandler)),
+);
+
+router.get(
+  '/google/callback',
+  authRateLimiter,
+  asyncHandler(authHandler.googleCallback.bind(authHandler)),
+);
+
 export { router as authRoutes };

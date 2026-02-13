@@ -13,6 +13,9 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().default('*'),
   RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(900_000),
   RATE_LIMIT_MAX: z.coerce.number().int().positive().default(100),
+  GOOGLE_CLIENT_ID: z.string().optional(),
+  GOOGLE_CLIENT_SECRET: z.string().optional(),
+  GOOGLE_CALLBACK_URL: z.string().url().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -33,6 +36,11 @@ export const config = Object.freeze({
     secret: parsed.data.JWT_SECRET,
     refreshSecret: parsed.data.REFRESH_TOKEN_SECRET,
     expiresIn: parsed.data.JWT_EXPIRES_IN,
+  },
+  google: {
+    clientId: parsed.data.GOOGLE_CLIENT_ID,
+    clientSecret: parsed.data.GOOGLE_CLIENT_SECRET,
+    callbackUrl: parsed.data.GOOGLE_CALLBACK_URL,
   },
   cors: {
     origin: parsed.data.CORS_ORIGIN,

@@ -4,9 +4,10 @@ import { ApiResponse } from '@libs/shared/response/index.js';
 import { config } from '@libs/shared/config/index.js';
 import { UnauthorizedError } from '@libs/shared/errors/index.js';
 import type { RegisterDto, LoginDto } from './dto.js';
+import { getGoogleAuthURL } from './google.js';
 
 const REFRESH_COOKIE_NAME = 'refreshToken';
-const REFRESH_COOKIE_MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days in ms
+const REFRESH_COOKIE_MAX_AGE = 365 * 24 * 60 * 60 * 1000; // 365 days in ms
 
 function setRefreshCookie(res: Response, token: string): void {
   res.cookie(REFRESH_COOKIE_NAME, token, {
@@ -88,6 +89,29 @@ export class AuthHandler {
     clearRefreshCookie(res);
 
     ApiResponse.success(res, null, 'Logout successful');
+  }
+  async google(_req: Request, res: Response): Promise<void> {
+    const url = getGoogleAuthURL();
+    res.redirect(url);
+  }
+
+  async googleCallback(req: Request, res: Response): Promise<void> {
+    const { code } = req.query as { code: string };
+
+    if (!code) {
+      throw new UnauthorizedError('Authorization code is missing');
+    }
+
+    const result = await authService.googleLogin(code, getSessionMeta(req));
+
+    setRefreshCookie(res, result.refreshToken);
+
+    // Redirect or return JSON? 
+    // Return JSON with tokens so frontend can handle it.
+    ApiResponse.success(res, {
+      user: result.user,
+      accessToken: result.accessToken,
+    }, 'Google login successful');
   }
 }
 
