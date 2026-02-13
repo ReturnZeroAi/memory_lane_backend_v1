@@ -14,3 +14,21 @@ export const rateLimiter = rateLimit({
     data: null,
   },
 });
+
+/**
+ * Stricter rate limiter for auth endpoints (login, register, refresh).
+ * 15 requests per 15-minute window per IP.
+ */
+export const authRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 15,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    meta: {
+      success: false,
+      message: 'Too many authentication attempts, please try again later.',
+    },
+    data: null,
+  },
+});

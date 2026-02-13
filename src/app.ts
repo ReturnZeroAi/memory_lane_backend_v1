@@ -1,6 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { config } from './libs/shared/config/index.js';
 import { rateLimiter, requestLogger, errorHandler } from './libs/shared/middleware/index.js';
 import { authRoutes } from './apps/auth/routes.js';
@@ -23,6 +24,7 @@ app.use(cors({
 // ─── Body Parsing ────────────────────────────────────────────────────
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(cookieParser());
 
 // ─── Rate Limiting ───────────────────────────────────────────────────
 app.use(rateLimiter);

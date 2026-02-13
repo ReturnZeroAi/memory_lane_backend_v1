@@ -6,6 +6,7 @@ dotenv.config();
 const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   JWT_SECRET: z.string().min(10),
+  REFRESH_TOKEN_SECRET: z.string().min(10),
   JWT_EXPIRES_IN: z.string().default('7d'),
   PORT: z.coerce.number().int().positive().default(3000),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
@@ -30,6 +31,7 @@ export const config = Object.freeze({
   databaseUrl: parsed.data.DATABASE_URL,
   jwt: {
     secret: parsed.data.JWT_SECRET,
+    refreshSecret: parsed.data.REFRESH_TOKEN_SECRET,
     expiresIn: parsed.data.JWT_EXPIRES_IN,
   },
   cors: {

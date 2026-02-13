@@ -1,4 +1,4 @@
-export { rateLimiter } from './rateLimiter.js';
+export { rateLimiter, authRateLimiter } from './rateLimiter.js';
 export { errorHandler } from './errorHandler.js';
 export { authMiddleware } from './authMiddleware.js';
 export type { JwtPayload } from './authMiddleware.js';

@@ -2,6 +2,7 @@ export interface RegisterDto {
   email: string;
   password: string;
   name: string;
+  phone: string;
 }
 
 export interface LoginDto {
@@ -15,7 +16,7 @@ export interface AuthResponseDto {
     email: string;
     name: string;
   };
-  token: string;
+  accessToken: string;
 }
 
 export interface UserDto {

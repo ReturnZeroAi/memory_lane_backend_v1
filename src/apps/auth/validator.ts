@@ -15,6 +15,11 @@ export const registerSchema = z.object({
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must not exceed 100 characters')
     .trim(),
+  phone: z
+    .string()
+    .min(1, 'Phone number is required')
+    .max(20, 'Phone number must not exceed 20 characters')
+    .trim(),
 });
 
 export const loginSchema = z.object({
